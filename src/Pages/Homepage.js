@@ -10,15 +10,15 @@ class Homepage extends React.Component {
         return (
             <div >
                 Homepage
-              <HashRouter>
-                <Route exact path="/modified-classics">
-        
-                </Route>
-                <Route exact path="/top-rated">
-        
-                </Route>
+                <HashRouter>
+                    <Route exact path="/modified-classics">
+            
+                    </Route>
+                    <Route exact path="/top-rated">
+            
+                    </Route>
                 </HashRouter>
-    </div>
+            </div>
         )
     }
   
