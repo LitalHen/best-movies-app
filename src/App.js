@@ -2,6 +2,8 @@ import { HashRouter, Route } from 'react-router-dom'
 import './App.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
+import Searchpage from './Pages/Searchpage';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         </Route>
         <Route exact path="/advanced-search">
 
+        </Route>
+        <Route exact path="/search-page">
+        <Searchpage></Searchpage>
         </Route>
 
       </HashRouter>
