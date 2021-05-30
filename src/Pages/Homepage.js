@@ -9,7 +9,8 @@ class Homepage extends React.Component {
     render() {
         return (
             <div >
-                Homepage
+        
+                
               <HashRouter>
                 <Route exact path="/modified-classics">
         
