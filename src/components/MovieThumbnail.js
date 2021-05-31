@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, CardDeck, CardGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class MovieThumbnail extends React.Component{
@@ -11,9 +11,9 @@ class MovieThumbnail extends React.Component{
         render(){
       
             const yearMovie = (new Date(this.props.releaseDate)).getFullYear();
-            console.log(yearMovie)
                 return(
                     <div className='p-movies-page'>
+                        <CardDeck>
                        <Card text-center >
                             <Link to={`/movies/${this.props.id}`}>
                             <Card.Img variant="top" src={this.props.poster_path} />
@@ -27,6 +27,7 @@ class MovieThumbnail extends React.Component{
                             <div className="badge badge-light">rate: {this.props.rate}</div>
                           
                     </Card>
+                    </CardDeck>
                     </div>
                     )
             }

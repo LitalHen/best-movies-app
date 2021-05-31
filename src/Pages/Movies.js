@@ -49,7 +49,7 @@ class Movies extends React.Component {
            
            return (
         
-            <Col key={id} lg={2} md={3} sm={6}>
+            <Col className="py-2" key={id} lg={2} md={3} sm={6}>
            <MovieThumbnail
             id={id}
             poster_path={movie.poster_path}
@@ -65,7 +65,7 @@ class Movies extends React.Component {
        
         return (
             <div >
-              <Row mx={0}>
+              <Row className="mx-0">
                 {movieCards}
                 </Row>
             </div>
