@@ -6,7 +6,6 @@ import './components.css'
 // 1. currentPage - the page that the user have chosen
 // 2. totalPages - the total number of pages for all movies display
 // 3. callBack function - setCurrentPage() to return the number of page that should be showen 
-// 4. limitPages - the total page numbers that will be displayed 
 class Paginator extends React.Component {
     constructor(props){
         super(props)
@@ -32,26 +31,65 @@ class Paginator extends React.Component {
     }
 
     goToLastPage = () => {
-        this.props.setCurrentPage(this.props.totalPageNums)
+        this.props.setCurrentPage(this.props.totalPages)
+    }
+
+    createPaginatorNums = () => {
+        // returns an array of numbers [3,4,5,6,7]// array.length between 1-5
+        let start;
+        if (this.props.currentPage === this.props.totalPages){
+            start = this.props.currentPage - 4
+        }
+        else if(this.props.currentPage === this.props.totalPages - 1){
+            start = this.props.currentPage - 3
+        } 
+        else{
+            start = this.props.currentPage - 2
+        }
+
+        let end; 
+        if (this.props.currentPage === 1){
+            end = this.props.currentPage + 5
+        }
+        else if(this.props.currentPage === 2){
+            end = this.props.currentPage + 4
+        } 
+        else{
+            end = this.props.currentPage + 3
+        }
+    
+        const numsArr = []
+        for(let i = start; i < end; i++ ){
+            if(i < 1){
+                continue;
+            }
+            else if(i > this.props.totalPages) {
+                break
+            }
+            else{
+                numsArr.push(i)
+            }
+        }
+        return numsArr;
+        
     }
 
     render() {
         let pagination = [];
-        
-        for(let i = 1; i < this.props.totalPageNums+1; i++){
-            for(let j = (this.props.currentPage - 2); j < this.state.currentPage + 3; j++) {
-                pagination.push(
+        const pageNumsArr = this.createPaginatorNums();
+        console.log(pageNumsArr)
+        // for(let i = 1; i < this.props.totalPageNums+1; i++){
+        //     pagination.push(
+            pagination = pageNumsArr.map(pageNum => {
+                return (
                     <Pagination.Item 
-                        key={i}
-                        className={`${(i === this.props.currentPage ? 'active' : '')} 
-                            ${((i > this.props.currentPage + 2) || (i < this.props.currentPage - 2) ? 'display-none' : '')}`}
+                        key={pageNum}
+                        className={`${(pageNum === this.props.currentPage ? 'active' : '')}`}
                         onClick={this.goToSelectedPage}>
-                            {i}
+                            {pageNum}
                     </Pagination.Item>
                 )
-            }
-        }
-        console.log(this.props.currentPage - 2)
+            })
         return (
             <Pagination className="justify-content-center">
                 <Pagination.First 
@@ -65,10 +103,10 @@ class Paginator extends React.Component {
 
                 <Pagination.Next
                     onClick={this.goToNextPage}
-                    className={this.props.currentPage === this.props.totalPageNums ? 'disabled' : ''}/>
+                    className={this.props.currentPage === this.props.totalPages ? 'disabled' : ''}/>
                 <Pagination.Last 
                     onClick={this.goToLastPage}
-                    className={this.props.currentPage === this.props.totalPageNums ? 'disabled' : ''}/>
+                    className={this.props.currentPage === this.props.totalPages ? 'disabled' : ''}/>
             </Pagination>
         )
     }
