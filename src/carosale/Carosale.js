@@ -15,11 +15,7 @@ componentDidMount = () =>{
    TMDBDiscover({page: Math.floor((Math.random() * 4) ), sort_by:"popularity.desc"}).then((res)=>{this.setState({carouselArr:res.results})})
    
    }
-   componentDidUpdate(prevProps,prevState){
-     if(this.state.carouselArr!==prevState.carouselArr){
-       console.log(this.state.carouselArr)
-     }
-   }
+   
     
    
 
