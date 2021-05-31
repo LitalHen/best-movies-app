@@ -3,7 +3,7 @@ export const useTMDBDiscover = (params) => {
     // i.e {with_actor}
     let queries = '';
     if(!params.page) {
-        params.page = 0;
+        params.page = 1;
     }
     for(let key in params) {
         queries += '&' + key + '=' + params[key]
