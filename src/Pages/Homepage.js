@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router';
-import { DISNEY_ID } from '../Constants';
+import { DISNEY_ID } from '../constants';
 
 class HomePage extends React.Component{
 
@@ -26,8 +26,10 @@ class HomePage extends React.Component{
                     overview: movie.overview,
                     releaseDate: movie.release_date,
                     rate:movie.vote_average,
+                    // runTime:movie.with_runtime,
+                    total_pages:movie.total_pages,
+                    popularity:movie.popularity,
                     poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
-                    
                       }
 
                
@@ -44,11 +46,12 @@ class HomePage extends React.Component{
         return(
             <div>
                 <Route exact path="/modified-classics">
-        
                 </Route>
                 <Route exact path="/top-rated">
-        
                 </Route>
+               {/* <MovieThumbnail
+                 moviesList={this.state.moviesList}/> */}
+                
             </div>
 
         )
