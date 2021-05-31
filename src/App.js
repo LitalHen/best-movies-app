@@ -7,7 +7,7 @@ import Searchpage from './Pages/Searchpage';
 
 function App() {
   return (
-    <div >
+    <div>
       <HashRouter>
         <Route exact path="/">
           <Homepage/>
