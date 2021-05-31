@@ -1,21 +1,26 @@
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import MovieThumbnail from '../components/MovieThumbnail';
 import { DISNEY_ID } from '../constants';
+import { TMDBDiscover } from '../utils';
 
 
 class Movies extends React.Component {
     constructor(props){
         super(props);
-      
+        this.state={
+            moviesList:[]
+
+        }
     }
     
     componentDidMount = () =>{
-        let pageNum=2;
+        let pageNum=1;
 
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e23d4bbe9541db53d2d48b97b8c30b05&language=en-US&include_adult=false&include_video=true&page=${pageNum}&with_companies=${DISNEY_ID}`)
-        .then((stream)=> stream.json())
+        TMDBDiscover({page:pageNum})
         .then((res)=>{
             if( res && res.results){
-            const movieObj= res.results. map((movie)=>{
+            const movieObj= res.results.map((movie)=>{
                 
                 return{
                     title: movie.original_title,
@@ -36,15 +41,33 @@ class Movies extends React.Component {
                             moviesList:movieObj
                             })
                  }
-                    console.log(this.state.moviesList)
+                   
             })
     }
     render() {
-        console.log(this.props.moviesList);
+        const movieCards =  this.state.moviesList.map((movie,id)=> {
+           
+           return (
+        
+            <Col key={id} lg={2} md={3} sm={6}>
+           <MovieThumbnail
+            id={id}
+            poster_path={movie.poster_path}
+            rate={movie.rate}
+            title={movie.title}
+            popularity={movie.popularity}
+            releaseDate={movie.releaseDate}
+            />
+            </Col>
+       
+            )
+        })
+       
         return (
             <div >
-                Movies Page
-              
+              <Row mx={0}>
+                {movieCards}
+                </Row>
             </div>
         )
     }

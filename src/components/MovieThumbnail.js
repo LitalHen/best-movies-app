@@ -1,7 +1,6 @@
 import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { API_KEY } from '../constants';
 
 class MovieThumbnail extends React.Component{
     constructor(props){
@@ -10,33 +9,26 @@ class MovieThumbnail extends React.Component{
     }
 
         render(){
-            const movieCards =  this.props.moviesList.map((movie,id)=> {
-                return <Col key={id} lg={2} md={3} sm={6}>
-                        <Card >
-                        <Link to={`/movies/${movie.id}`}>
-                        <Card.Img variant="top" src={movie.poster_path} />
-                        </Link>    
-                        <div class="card-img-overlay">
-                               
-              {/* <div> runtime: {`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}`}</div> */}
-              
-              
-              <div className="badge badge-light">rate: {movie.rate}</div>
-              </div>
-              <h5>{movie.title}</h5>  
-              <div> popularity:{movie.popularity}</div>
-              <div>year: {movie.releaseDate}</div>
-                    </Card>
-                    </Col> 
-                })
-           
+      
+            const yearMovie = (new Date(this.props.releaseDate)).getFullYear();
+            console.log(yearMovie)
                 return(
-                <div className='p-movies-page'>
-                    <Row>
-                    {movieCards}
-                    </Row>
-                </div>
-                )
+                    <div className='p-movies-page'>
+                       <Card text-center >
+                            <Link to={`/movies/${this.props.id}`}>
+                            <Card.Img variant="top" src={this.props.poster_path} />
+                            </Link>    
+                            {/* <div class="card-img-overlay"> */}                   
+                           
+                            {/* </div> */}
+                            <h5>{this.props.title}</h5>  
+                            <div> popularity:{this.props.popularity}</div>
+                            <div>year: {yearMovie}</div>
+                            <div className="badge badge-light">rate: {this.props.rate}</div>
+                          
+                    </Card>
+                    </div>
+                    )
             }
         }
 export default MovieThumbnail;      
