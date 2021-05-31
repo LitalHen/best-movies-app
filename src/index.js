@@ -7,8 +7,8 @@ import Carosale from './carosale/Carosale';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
-      </React.StrictMode>,
+<Carosale></Carosale>    
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
