@@ -3,7 +3,6 @@ import './App.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Constants from './Constants';
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
         </Route>
 
       </HashRouter>
-      <Constants/>
+
     </div>
   );
 }
