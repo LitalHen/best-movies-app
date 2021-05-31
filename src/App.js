@@ -3,7 +3,7 @@ import './App.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import Searchpage from './Pages/Searchpage';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

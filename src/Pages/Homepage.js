@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router';
-import { DISNEY_ID } from '../Constants';
+import { DISNEY_ID } from '../constants';
 
 class HomePage extends React.Component{
 
