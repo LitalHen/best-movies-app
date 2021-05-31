@@ -12,11 +12,7 @@ class HomePage extends React.Component{
     }
 
     componentDidMount = () =>{
-        const companyNum=6125;
         let pageNum=2;
-       // =this.props.companyNumber
-
-        //api- sortBy=popularity.desc, video=true, adults=false
 
         fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e23d4bbe9541db53d2d48b97b8c30b05&language=en-US&include_adult=false&include_video=true&page=${pageNum}&with_companies=${DISNEY_ID}`)
         .then((stream)=> stream.json())
