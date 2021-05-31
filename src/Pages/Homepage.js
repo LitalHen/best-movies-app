@@ -1,43 +1,62 @@
+import React from 'react'
+import { Route } from 'react-router';
+import { DISNEY_ID } from '../Constants';
 
-import React from 'react';
-import { HashRouter, Route } from 'react-router-dom';
-import Paginator from '../Components/Paginator-generic';
+class HomePage extends React.Component{
 
-class Homepage extends React.Component {
     constructor(props){
-        super(props)
-        this.state ={
-            currentPage: 1,
-
+        super(props);
+        this.state={
+            moviesList:[]
         }
     }
 
-    setCurrentPage = (pageNum) => {
-        this.setState({
-            currentPage: pageNum
-        })
-    }
+    componentDidMount = () =>{
+        const companyNum=6125;
+        let pageNum=2;
+       // =this.props.companyNumber
 
-    render() {
-        return (
-            <div >
-                Homepage
-                <Paginator
-                    currentPage={this.state.currentPage}
-                    totalPageNums={8}
-                    setCurrentPage={this.setCurrentPage}/>
-                <HashRouter>
-                    <Route exact path="/modified-classics">
-            
-                    </Route>
-                    <Route exact path="/top-rated">
-            
-                    </Route>
-                </HashRouter>
+        //api- sortBy=popularity.desc, video=true, adults=false
+
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e23d4bbe9541db53d2d48b97b8c30b05&language=en-US&include_adult=false&include_video=true&page=${pageNum}&with_companies=${DISNEY_ID}`)
+        .then((stream)=> stream.json())
+        .then((res)=>{
+            if( res && res.results){
+            const movieObj= res.results. map((movie)=>{
+                
+                return{
+                    title: movie.original_title,
+                    laguage: movie.original_language,
+                    overview: movie.overview,
+                    releaseDate: movie.release_date,
+                    rate:movie.vote_average,
+                    poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
+                    
+                      }
+
+               
+                                    })
+
+                    this.setState({
+                            moviesList:movieObj
+                            })
+                 }
+                    console.log(this.state.moviesList)
+            })
+    }
+    render(){
+        return(
+            <div>
+                <Route exact path="/modified-classics">
+        
+                </Route>
+                <Route exact path="/top-rated">
+        
+                </Route>
             </div>
+
         )
     }
-  
 }
 
-export default Homepage;
+export default HomePage; 
