@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router';
+import Carosale from '../carosale/Carosale';
 import { DISNEY_ID } from '../constants';
 
 class HomePage extends React.Component{
@@ -43,6 +44,7 @@ class HomePage extends React.Component{
     render(){
         return(
             <div>
+                <Carosale></Carosale>
                 <Route exact path="/modified-classics">
         
                 </Route>

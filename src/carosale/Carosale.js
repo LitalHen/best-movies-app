@@ -40,9 +40,11 @@ componentDidMount = () =>{
               src={`https://themoviedb.org/t/p/w400//${element.backdrop_path}`}
               alt="First slide"
             />
+
             <Carousel.Caption>
-              <h1>{`${element.release_date}`}</h1>
-              <h3>{element.original_title}</h3>
+            <div> <h1>{`${element.release_date}`}</h1></div> 
+
+             <div><h3>{element.original_title}</h3></div> 
               
                 </Carousel.Caption>
           </Carousel.Item>
