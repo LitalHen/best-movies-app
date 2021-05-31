@@ -6,7 +6,7 @@ import Homepage from './Pages/Homepage';
 
 function App() {
   return (
-    <div >
+    <div>
       <HashRouter>
         <Route exact path="/">
           <Homepage/>
