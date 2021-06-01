@@ -19,10 +19,11 @@ class Movies extends React.Component {
         this.setState({
             currentPage:pageNum
         })
+        this.choosePage(pageNum);
 
     }
-    componentDidMount = () =>{
-        TMDBDiscover({page:this.state.currentPage})
+    choosePage = (pageNum) => {
+        TMDBDiscover({page:pageNum})
         .then((listOfMovies)=>{
             if( listOfMovies && listOfMovies.results){
             const pages=listOfMovies.total_pages;
@@ -35,6 +36,9 @@ class Movies extends React.Component {
                  }
                    
             })
+    }
+    componentDidMount = () =>{
+        this.choosePage(this.state.currentPage);
     }
     render() {
        

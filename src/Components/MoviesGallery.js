@@ -11,13 +11,14 @@ class MoviesGallery extends React.Component{
     
     render(){
         const movieCards =  this.props.moviesList.map((movie,id)=> {
-           
+        const checkPoster = movie.poster_path.includes('null');
             return (
-         
-             <Col className="py-2" key={id} lg={2} md={3} sm={6}>
+            
+      
+             <Col className="py-2" key={id} lg={2} md={3} sm={6} >
             <MovieThumbnail
-             id={id}
-             poster_path={movie.poster_path}
+             movieId={movie.movieId}
+             poster_path={(!checkPoster) ? movie.poster_path : 'https://picsum.photos/id/1/200/300?grayscale'}
              rate={movie.rate}
              title={movie.title}
              popularity={movie.popularity}
