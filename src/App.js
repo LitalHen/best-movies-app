@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <HashRouter>
-        <Route exact path="/">
+        <Route exact path={['/','/top-rated','/modified-classics']}>
           <Homepage/>
         </Route>
         <Route exact path="/movies">
