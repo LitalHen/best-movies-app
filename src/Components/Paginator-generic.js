@@ -13,17 +13,28 @@ class Paginator extends React.Component {
 
     //goToSelectedPage is a callback func that returns the selected page to the patrent
     //setCurrentPage is located at the parent, get the selected page and changes the state of the current page
-    goToSelectedPage = (event) => {
-        const selectedPage = event.target.innerText;
-        this.props.setCurrentPage(parseInt(selectedPage))
+    goToSelectedPage = (pageNum) => {
+        this.props.setCurrentPage(parseInt(pageNum))
     }
 
     goToPreviousPage = () => {
-        this.props.setCurrentPage(parseInt(this.props.currentPage - 1))
+        const current = this.props.currentPage;
+        if(current===1) {
+            return
+        }
+        else {
+            this.props.setCurrentPage(parseInt(current - 1))
+        }
     }
 
     goToNextPage = () => {
-        this.props.setCurrentPage(parseInt(this.props.currentPage + 1))
+        const current = this.props.currentPage;
+        if(current===this.props.totalPages){
+            return
+        }
+        else {
+            this.props.setCurrentPage(parseInt(this.props.currentPage + 1))
+        }
     }
 
     goToFirstPage = () => {
@@ -35,57 +46,43 @@ class Paginator extends React.Component {
     }
 
     createPaginatorNums = () => {
-        // returns an array of numbers [3,4,5,6,7]// array.length between 1-5
-        let start;
-        if (this.props.currentPage === this.props.totalPages){
-            start = this.props.currentPage - 4
-        }
-        else if(this.props.currentPage === this.props.totalPages - 1){
-            start = this.props.currentPage - 3
-        } 
-        else{
-            start = this.props.currentPage - 2
-        }
-
-        let end; 
-        if (this.props.currentPage === 1){
-            end = this.props.currentPage + 5
-        }
-        else if(this.props.currentPage === 2){
-            end = this.props.currentPage + 4
-        } 
-        else{
-            end = this.props.currentPage + 3
-        }
-    
-        const numsArr = []
-        for(let i = start; i < end; i++ ){
-            if(i < 1){
-                continue;
-            }
-            else if(i > this.props.totalPages) {
-                break
-            }
-            else{
+        const numsArr = [];
+        const currentPage = this.props.currentPage;
+        const totalPages = this.props.totalPages
+        if (this.props.totalPages <= 5){
+            for(let i = 1; i < totalPages + 1; i++){
                 numsArr.push(i)
             }
         }
-        return numsArr;
-        
+        else if (currentPage <= 3) {
+            for(let i = 1; i < 6; i++){
+                numsArr.push(i)
+            }
+        }
+        else if (currentPage >= totalPages - 2){
+            for(let i = totalPages - 4; i < totalPages + 1; i++){
+                numsArr.push(i)
+            }
+        }
+        else {
+            for(let i = currentPage - 2; i < currentPage + 3; i++){
+                numsArr.push(i)
+            }
+        }
+        return numsArr
     }
 
     render() {
+        const disableIfFirst = this.props.currentPage === 1 ? 'disabled' : '';
+        const disableIfLast = this.props.currentPage === this.props.totalPages ? 'disabled' : '';
         let pagination = [];
         const pageNumsArr = this.createPaginatorNums();
-        console.log(pageNumsArr)
-        // for(let i = 1; i < this.props.totalPageNums+1; i++){
-        //     pagination.push(
             pagination = pageNumsArr.map(pageNum => {
                 return (
                     <Pagination.Item 
                         key={pageNum}
                         className={`${(pageNum === this.props.currentPage ? 'active' : '')}`}
-                        onClick={this.goToSelectedPage}>
+                        onClick={() => this.goToSelectedPage(pageNum)}>
                             {pageNum}
                     </Pagination.Item>
                 )
@@ -94,19 +91,19 @@ class Paginator extends React.Component {
             <Pagination className="justify-content-center">
                 <Pagination.First 
                     onClick={this.goToFirstPage}
-                    className={this.props.currentPage === 1 ? 'disabled' : ''}/>
+                    className={disableIfFirst}/>
                 <Pagination.Prev
                     onClick={this.goToPreviousPage}
-                    className={this.props.currentPage === 1 ? 'disabled' : ''} />
+                    className={disableIfFirst} />
 
                         {pagination}
 
                 <Pagination.Next
                     onClick={this.goToNextPage}
-                    className={this.props.currentPage === this.props.totalPages ? 'disabled' : ''}/>
+                    className={disableIfLast}/>
                 <Pagination.Last 
                     onClick={this.goToLastPage}
-                    className={this.props.currentPage === this.props.totalPages ? 'disabled' : ''}/>
+                    className={disableIfLast}/>
             </Pagination>
         )
     }
