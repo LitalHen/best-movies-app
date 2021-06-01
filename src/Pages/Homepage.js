@@ -62,16 +62,16 @@ class HomePage extends React.Component{
             <div>
 
         <BrowserRouter>
-                 <Navbar bg="light" expand="lg">
+                 {/* <Navbar bg="light" expand="lg">
                     <Navbar.Brand href="/#/">Disney Classics</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                       <NavLink className="nav-bar" to="/movies">Movies</NavLink>
-                      <NavLink to="/movies"> Advanced Search</NavLink>
+                      <NavLink to="/advanced-search"> Advanced Search</NavLink>
                       </Nav>
                   </Navbar.Collapse>
-           </Navbar>
+           </Navbar> */}
 
            <Container fluid className="top-remake-link">
                <Row className="row-link">
@@ -93,14 +93,14 @@ class HomePage extends React.Component{
                 <Route path="/top-rated">
                
                 </Route>
-               
+{/*                
                 <Route path="/movies" component={Movies}>
                              
                 </Route>
                              
                 <Route path="/advanced-search">
             
-                </Route>
+                </Route> */}
             </Switch>
 
         </BrowserRouter>
