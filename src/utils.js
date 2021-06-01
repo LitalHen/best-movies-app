@@ -32,13 +32,10 @@ export const TMDBsearch = (maxPages) => {
            allMovies.push(jsonObjects[i].results)
             
         }
-        // let test = allMovies.join();
-        // console.log(test);
-        // console.log(allMovies);
-        // console.log(jsonObjects);
 
-        // console.log(jsonObjects)
         allMovies =  allMovies.flat();
+        
+
         
         /// in javascript - object
 
