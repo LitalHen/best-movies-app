@@ -1,6 +1,6 @@
 import React from 'react';
-import MoviesGallery from '../components/MoviesGallery';
-import Paginator from '../components/Paginator-generic';
+import MoviesGallery from '../Components/MoviesGallery';
+import Paginator from '../Components/Paginator-generic';
 import { createMoviesObj, TMDBDiscover } from '../utils';
 
 
@@ -19,10 +19,11 @@ class Movies extends React.Component {
         this.setState({
             currentPage:pageNum
         })
+        this.choosePage(pageNum);
 
     }
-    componentDidMount = () =>{
-        TMDBDiscover({page:this.state.currentPage})
+    choosePage = (pageNum) => {
+        TMDBDiscover({page:pageNum})
         .then((listOfMovies)=>{
             if( listOfMovies && listOfMovies.results){
             const pages=listOfMovies.total_pages;
@@ -35,6 +36,9 @@ class Movies extends React.Component {
                  }
                    
             })
+    }
+    componentDidMount = () =>{
+        this.choosePage(this.state.currentPage);
     }
     render() {
        

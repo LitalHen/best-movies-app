@@ -1,3 +1,35 @@
+/* Paginator-generic component */
 .display-none {
     display: none;
+}
+
+/*MainNavbar Component */
+.logo-img {
+    width: 50px;
+    margin-right: 8px;
+    margin-top: -5px;
+}
+.logo-img img {
+    width: 100%;
+}
+
+.top-remake-link{
+
+    margin-top: 10rem;
+}
+
+.col-link{
+
+   max-width:13% !important;
+}
+
+.row-link{
+
+    justify-content: center;
+}
+
+.nav-bar{
+
+    margin-right: 10px;
+
 }
