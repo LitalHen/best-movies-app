@@ -36,4 +36,15 @@ border-radius: 5px;
   display: flex;
 
 }
+.detailsPage{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+}
+.detailsPage img {
+ margin: auto;
+
+}
+
   
