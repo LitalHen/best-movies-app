@@ -12,46 +12,38 @@ export default class Carosale extends Component {
     }
   }
 componentDidMount = () =>{
-   TMDBDiscover({page: 0, sort_by:"popularity.desc"}).then((res)=>{this.setState({carouselArr:res.results})})
+   TMDBDiscover({page: 0, sort_by:"popularity.desc"})
+   .then((res)=>{this.setState({carouselArr:res.results})})
    
    }
-   
-    
-   
-
-
-
-
-   
     render() {
-      let newCarouselArr=[]
-      let numArr=[]
-
-      if(this.state.carouselArr.length>=5){
-      for (let i = 5; i > 0; i--) {
-        let num=Math.floor((Math.random() * 20) + 0)
-        const element =(!numArr.includes(num))? this.state.carouselArr[num]: ""
-       numArr.push(num)
-       if(element.backdrop_path){
-        newCarouselArr.push(
-          <Carousel.Item interval={3500}>
-            <img
+      const shuffledMovies = this.state.carouselArr.sort( (a, b) => {
+        return Math.random() - 0.5
+        } )
+         let newCarouselArr=[]
+         if(this.state.carouselArr.length>0){
+          for (let i = 5; i > 0; i--) {
+             const element = shuffledMovies[i]
+                 {
+             newCarouselArr.push(
+             <Carousel.Item interval={3500}>
+              <img
               className="d-block w-100"
-              src={`https://themoviedb.org/t/p/w400//${element.backdrop_path}`}
+              src={`https://themoviedb.org/t/p/w400/${element.backdrop_path}`}
               alt="First slide"
-            />
+              />
 
-            <Carousel.Caption>
-            <div> <h1>{`${element.release_date}`}</h1></div> 
+               <Carousel.Caption>
+               <div> <h1>{element.release_date}</h1></div> 
 
-             <div><h3>{element.original_title}</h3></div> 
+               <div><h3>{element.original_title}</h3></div> 
               
-                </Carousel.Caption>
-          </Carousel.Item>
+               </Carousel.Caption>
+               </Carousel.Item>
              )
         
       }}}
-        return (  <Carousel>
+        return (    <Carousel>
                     {newCarouselArr} 
                     </Carousel>        ) 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
-import {useTMDBDiscover} from '../utils'; 
+import {TMDBDiscover} from '../utils'; 
 class HomePage extends React.Component{
 
     constructor(props){
@@ -56,7 +56,6 @@ class HomePage extends React.Component{
     render(){
         return(
             <div>
-                <Carosale></Carosale>
                 <Route exact path="/modified-classics">
                    
                 </Route>
