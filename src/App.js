@@ -12,9 +12,8 @@ function App() {
     <div>
       
       <HashRouter>
-        <Route exact path={['/', '/movies', '/advanced-search']}>
-          <MainNavbar/>
-        </Route>
+      <MainNavbar/>
+        
         <Route exact path={['/','/disney-classics','/disney-new']}>
           <Homepage/>
         </Route>

@@ -2,6 +2,7 @@ import React from 'react'
 import {NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
 import {TMDBDiscover} from '../utils'; 
+import { Col, Container, Row } from 'react-bootstrap';
 class HomePage extends React.Component{
 
     constructor(props){
@@ -13,45 +14,45 @@ class HomePage extends React.Component{
         }
     }
 
-    setCurrentPage = (pageNum) =>{
-        this.setState({
-            currentPage:pageNum
-        })
-        this.choosePage(pageNum)
-    }
+    // setCurrentPage = (pageNum) =>{
+    //     this.setState({
+    //         currentPage:pageNum
+    //     })
+    //     this.choosePage(pageNum)
+    // }
 
-    componentDidMount = () =>{
+    // componentDidMount = () =>{
       
-       TMDBDiscover({page:this.state.currentPage})
-        .then((res)=>{
-            if(res && res.results){
-                const pages=res.total_pages;
-                const movieObj= res.results.map((movie)=>{
-                return{
-                    movieId: movie.id,
-                    title: movie.original_title,
-                    laguage: movie.original_language,
-                    overview: movie.overview,
-                    releaseDate: movie.release_date,
-                    rate:movie.vote_average,
-                    //runTime:movie.with_runtime,
-                    total_pages:movie.total_pages,
-                    popularity:movie.popularity,
-                    poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
-                      }
-                    })
+    //    TMDBDiscover({page:1})
+    //     .then((res)=>{
+    //         if(res && res.results){
+    //             const pages=res.total_pages;
+    //             const movieObj= res.results.map((movie)=>{
+    //             return{
+    //                 movieId: movie.id,
+    //                 title: movie.original_title,
+    //                 laguage: movie.original_language,
+    //                 overview: movie.overview,
+    //                 releaseDate: movie.release_date,
+    //                 rate:movie.vote_average,
+    //                 //runTime:movie.with_runtime,
+    //                 total_pages:movie.total_pages,
+    //                 popularity:movie.popularity,
+    //                 poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
+    //                   }
+    //                 })
 
-                this.setState({
-                    moviesList:movieObj,
-                    totalPages:pages
-                })
-            }
-        })
-    }
+    //             this.setState({
+    //                 moviesList:movieObj,
+    //                 totalPages:pages
+    //             })
+    //         }
+    //     })
+    // }
 
-    componentDidMount = () =>{
-       this.choosePage(this.state.currentPage)
-    }
+    // componentDidMount = () =>{
+    //    this.choosePage(this.state.currentPage)
+    // }
 
     render(){
         return(

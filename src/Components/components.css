@@ -12,3 +12,24 @@
 .logo-img img {
     width: 100%;
 }
+
+.top-remake-link{
+
+    margin-top: 10rem;
+}
+
+.col-link{
+
+   max-width:13% !important;
+}
+
+.row-link{
+
+    justify-content: center;
+}
+
+.nav-bar{
+
+    margin-right: 10px;
+
+}

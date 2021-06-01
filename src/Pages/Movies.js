@@ -1,6 +1,6 @@
 import React from 'react';
-import MoviesGallery from '../components/MoviesGallery';
-import Paginator from '../components/Paginator-generic';
+import MoviesGallery from '../Components/MoviesGallery';
+import Paginator from '../Components/Paginator-generic';
 import { createMoviesObj, TMDBDiscover } from '../utils';
 
 
