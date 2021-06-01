@@ -19,6 +19,7 @@ export const createMoviesObj = (listOfMovies) => {
                 //Recieves list of movies from fetch
                 // return array of movies obj
                 return{
+                    movieId: movie.id,
                     title: movie.original_title,
                     laguage: movie.original_language,
                     overview: movie.overview,
