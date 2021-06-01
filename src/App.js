@@ -4,7 +4,6 @@ import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
   return (
     <div>
