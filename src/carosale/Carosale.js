@@ -29,7 +29,7 @@ componentDidMount = () =>{
 
       if(this.state.carouselArr.length>=5){
       for (let i = 5; i > 0; i--) {
-        let num=Math.floor((Math.random() * 19) + 0)
+        let num=Math.floor((Math.random() * 20) + 0)
         const element =(!numArr.includes(num))? this.state.carouselArr[num]: ""
        numArr.push(num)
        if(element.backdrop_path){
