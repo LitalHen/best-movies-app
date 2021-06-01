@@ -72,7 +72,7 @@ class Searchpage extends React.Component {
         });
         TMDBsearch(5).then(allMoviesResults => 
             {
-                debugger;
+                // debugger;
                 this.setState(
                 {
                     movieArray: allMoviesResults,
