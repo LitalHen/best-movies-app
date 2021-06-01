@@ -1,7 +1,10 @@
 import React from 'react'
+import {BrowserRouter,NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
-import { Link } from 'react-router-dom';
-import {useTMDBDiscover} from '../utils'; 
+import {TMDBDiscover} from '../utils';
+import Movies from './Movies';
+import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
+import '../homePageStyle.css';
 class HomePage extends React.Component{
 
     constructor(props){
@@ -25,7 +28,6 @@ class HomePage extends React.Component{
     componentDidMount = () =>{
       
        TMDBDiscover({page:this.state.currentPage})
-        .then((stream)=> stream.json())
         .then((res)=>{
             if(res && res.results){
                 const pages=res.total_pages;
@@ -51,19 +53,58 @@ class HomePage extends React.Component{
                             totalPages:pages
                             })
                  }
+                 console.log(this.state.moviesList)
             })
     }
     render(){
+
         return(
             <div>
-                <Route exact path="/modified-classics">
-                   
+
+        <BrowserRouter>
+                 <Navbar bg="light" expand="lg">
+                    <Navbar.Brand href="/#/">Disney Classics</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                      <NavLink className="nav-bar" to="/movies">Movies</NavLink>
+                      <NavLink to="/movies"> Advanced Search</NavLink>
+                      </Nav>
+                  </Navbar.Collapse>
+           </Navbar>
+
+           <Container fluid className="top-remake-link">
+               <Row className="row-link">
+                   <Col className="col-link" xs={10} md={8} lg={4}>
+                   <NavLink to="/top-rated">Top Rated</NavLink>
+                   </Col>
+                   <Col className="col-link" xs={10} md={8} lg={4}>
+                   <NavLink to="/modified-classics">modified-classics</NavLink>
+                   </Col>
+               </Row>
+                      
+                     
+               </Container>
+            <Switch>
+                <Route path="/modified-classics" component={Movies}>
+                             
                 </Route>
-                <Route exact path="/top-rated">
+
+                <Route path="/top-rated">
+               
                 </Route>
-               {/* <MovieThumbnail
-                 moviesList={this.state.moviesList}/> */}
-                
+               
+                <Route path="/movies" component={Movies}>
+                             
+                </Route>
+                             
+                <Route path="/advanced-search">
+            
+                </Route>
+            </Switch>
+
+        </BrowserRouter>
+        
             </div>
 
         )
