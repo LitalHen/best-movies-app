@@ -2,7 +2,7 @@
 // import { Card, ListGroup, Button, Form } from 'bootstrap-react';
 import React from 'react';
 import { Card, ListGroup, Button, Form  } from 'react-bootstrap';
-import { TMDBDiscover } from '../utils';
+import { TMDBDiscover, TMDBsearch } from '../utils';
 
 
 
@@ -14,7 +14,14 @@ class Searchpage extends React.Component {
             movieArray: [],
         };
     }
+    
+    //  to change page. passing the func a parameter. set the first page to be 1 in componentDidMount which happens once.
+    componentDidMount = () => { 
+        this.setPage(1);
+     }
 
+   // setPage calls the API and when the results are returned we override this.state.movieArray with the results from the API.
+    //the pageNum parameter is passed to the API. 
 
     setPage = (pageNum) => {
         TMDBDiscover({ page: pageNum })
@@ -23,6 +30,8 @@ class Searchpage extends React.Component {
             this.setState({ movieArray: data.results });
         });   
     }  
+    
+ 
     
 
     // componentDidMount = () => {     // put change text var instead of adam
@@ -35,10 +44,7 @@ class Searchpage extends React.Component {
     //       })
     //   }
 
-    //  to change page. passing the func a parameter 
-    componentDidMount = () => { 
-       this.setPage(1);
-    }
+ 
      
     
     //     const objOfMovie = data.map((movie) => { 
@@ -61,10 +67,19 @@ class Searchpage extends React.Component {
     updateText = (event) =>{
         const val = event.target.value;
         // Update the internal state
-        
         this.setState({
             searchText: val
         });
+        TMDBsearch(5).then(allMoviesResults => 
+            {
+                debugger;
+                this.setState(
+                {
+                    movieArray: allMoviesResults,
+                })
+            }
+        )
+
         // update the parent component 
         // this.props.onSearchChanged(val);
     }
@@ -77,21 +92,17 @@ class Searchpage extends React.Component {
     // }
     
     render() {
-        const arrayOfCards = this.state.movieArray.filter((obj) => { return obj.title.toUpperCase().includes(this.state.searchText.toUpperCase()); }).map((dataItem, index) => {
+        const searchResults = this.state.movieArray.filter((obj) => { return obj.title.toUpperCase().includes(this.state.searchText.toUpperCase()); }).map((dataItem, index) => {
             return  <ListGroup.Item action key={index} onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}>{dataItem.original_title}</ListGroup.Item>
         });
-          // issue.issueTitle.toUpperCase()  title to upper case   . this.state.searchText.toUpperCase()  input from user to upper case (user search)
-//   const filteredIssues = sortedIssues.filter((issue)=> issue.issueTitle.toUpperCase().includes(this.state.searchText.toUpperCase()));
-//   const arrayOfCards = this.data.filter((dataItem, index) => {
-//     return  <ListGroup.Item action key={index} onClick={()=> this.resultSelected(index)}>{dataItem.name}</ListGroup.Item>
-//     })
-
+        
+        // this.search(5)
         return (
             <div className="search-box">                                                        
-            {/* ?? if   this.props.placeholder  is undefined will show text "Please remember to pass props"*/}
-         <Form.Control onChange={this.updateText} value={this.state.searchText} placeholder={this.props.placeholder ?? "Please remember to pass props"}/>
+            {/* Nullish coalescing operator (??)  if   this.props.placeholder  is undefined will show text "Please remember to pass props"*/}
+         <Form.Control onChange={this.updateText} value={this.state.searchText} placeholder={this.props.placeholder ?? "remember to pass props"}/>
             <ListGroup>                                                                     
-                {arrayOfCards}
+                {searchResults}
             </ListGroup>
 
 
@@ -107,7 +118,7 @@ class Searchpage extends React.Component {
                         the card's content.
                         </Card.Text>
                         <Button variant="primary">Go somewhere</Button>
-                        <Button onClick={() => { const pageValue = prompt("Please enter page number"); this.setPage(pageValue);  }}>Change Page</Button>
+                        {/* <Button onClick={() => { const pageValue = prompt("Please enter page number"); this.setPage(pageValue);  }}>Change Page</Button> */}
                   </Card.Body>
               </Card>
           </div>
