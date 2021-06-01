@@ -30,12 +30,10 @@ class MoviesGallery extends React.Component{
          })
         console.log(this.props.moviesList)
         return(
-            <div >
-                movies gallery
-                
+            <div >               
             <Row className="mx-0">
               {movieCards}
-              </Row>
+            </Row>
           </div>
             )
         }
