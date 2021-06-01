@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter,NavLink, Switch} from "react-router-dom";
+import {NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
 import {TMDBDiscover} from '../utils';
 import Movies from './Movies';
@@ -61,7 +61,7 @@ class HomePage extends React.Component{
         return(
             <div>
 
-        <BrowserRouter>
+      
                  {/* <Navbar bg="light" expand="lg">
                     <Navbar.Brand href="/#/">Disney Classics</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -86,24 +86,16 @@ class HomePage extends React.Component{
                      
                </Container>
             <Switch>
-                <Route path="/modified-classics" component={Movies}>
-                             
+                <Route path="/modified-classics" >
+                      <Movies/>    
                 </Route>
 
                 <Route path="/top-rated">
                
                 </Route>
-{/*                
-                <Route path="/movies" component={Movies}>
-                             
-                </Route>
-                             
-                <Route path="/advanced-search">
-            
-                </Route> */}
+
             </Switch>
 
-        </BrowserRouter>
         
             </div>
 
