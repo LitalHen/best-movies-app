@@ -1,9 +1,13 @@
 import React from 'react'
 import {NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
-import {TMDBDiscover} from '../utils';
+
+import {TMDBDiscover, useTMDBDiscover} from '../utils'; 
 import { Col, Container, Row } from 'react-bootstrap';
 import '../homePageStyle.css';
+import { Link } from 'react-router-dom';
+
+
 class HomePage extends React.Component{
 
     constructor(props){
@@ -21,9 +25,11 @@ class HomePage extends React.Component{
         })
         this.choosePage(pageNum)
     }
-
     choosePage = (pageNum) => {
         TMDBDiscover({page: pageNum})
+    }
+    componentDidMount = () =>{   
+       TMDBDiscover({page:this.state.currentPage})
         .then((res)=>{
             if(res && res.results){
                 const pages=res.total_pages;

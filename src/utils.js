@@ -14,3 +14,25 @@ export const TMDBDiscover = (params) => {
           .then((stream)=> stream.json())
 }
 
+export const createMoviesObj = (listOfMovies) => {
+  const moviesObj= listOfMovies.results.map((movie)=>{
+                //Recieves list of movies from fetch
+                // return array of movies obj
+                return{
+                    movieId: movie.id,
+                    title: movie.original_title,
+                    laguage: movie.original_language,
+                    overview: movie.overview,
+                    releaseDate: movie.release_date,
+                    rate:movie.vote_average,
+                    runTime:movie.with_runtime,
+                    total_pages:movie.total_pages,
+                    popularity:movie.popularity,
+                    poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
+                      }
+
+               
+                 })
+                 return moviesObj;
+}
+
