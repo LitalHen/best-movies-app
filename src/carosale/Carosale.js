@@ -12,7 +12,7 @@ export default class Carosale extends Component {
     }
   }
 componentDidMount = () =>{
-   TMDBDiscover({page: Math.floor((Math.random() * 4) ), sort_by:"popularity.desc"}).then((res)=>{this.setState({carouselArr:res.results})})
+   TMDBDiscover({page: 0, sort_by:"popularity.desc"}).then((res)=>{this.setState({carouselArr:res.results})})
    
    }
    
@@ -30,7 +30,7 @@ componentDidMount = () =>{
       if(this.state.carouselArr.length>=5){
       for (let i = 5; i > 0; i--) {
         let num=Math.floor((Math.random() * 19) + 0)
-        const element =(!numArr.includes(num))? this.state.carouselArr[num]: i++
+        const element =(!numArr.includes(num))? this.state.carouselArr[num]: ""
        numArr.push(num)
        if(element.backdrop_path){
         newCarouselArr.push(
@@ -53,6 +53,7 @@ componentDidMount = () =>{
       }}}
         return (  <Carousel>
                     {newCarouselArr} 
-                    </Carousel>        )
+                    </Carousel>        ) 
+
     }
 }
