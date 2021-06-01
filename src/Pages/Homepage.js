@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
-import {useTMDBDiscover} from '../utils'; 
+import {TMDBDiscover, useTMDBDiscover} from '../utils'; 
 class HomePage extends React.Component{
 
     constructor(props){
@@ -25,7 +25,6 @@ class HomePage extends React.Component{
     componentDidMount = () =>{
       
        TMDBDiscover({page:this.state.currentPage})
-        .then((stream)=> stream.json())
         .then((res)=>{
             if(res && res.results){
                 const pages=res.total_pages;
