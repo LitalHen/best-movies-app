@@ -49,27 +49,16 @@ class Paginator extends React.Component {
         const numsArr = [];
         const currentPage = this.props.currentPage;
         const totalPages = this.props.totalPages
-        if (this.props.totalPages <= 5){
-            for(let i = 1; i < totalPages + 1; i++){
-                numsArr.push(i)
+        let count = 0;
+        let pageToTest = (totalPages - currentPage > 0) ? currentPage - 1: currentPage - 2;
+        while(count < 3 && pageToTest <= totalPages){
+            if(pageToTest > 0) {
+                count++;
+                numsArr.push(pageToTest);
             }
+            pageToTest++;
         }
-        else if (currentPage <= 3) {
-            for(let i = 1; i < 6; i++){
-                numsArr.push(i)
-            }
-        }
-        else if (currentPage >= totalPages - 2){
-            for(let i = totalPages - 4; i < totalPages + 1; i++){
-                numsArr.push(i)
-            }
-        }
-        else {
-            for(let i = currentPage - 2; i < currentPage + 3; i++){
-                numsArr.push(i)
-            }
-        }
-        return numsArr
+        return numsArr;
     }
 
     render() {
