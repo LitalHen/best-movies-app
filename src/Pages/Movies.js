@@ -1,5 +1,6 @@
 import React from 'react';
 import MoviesGallery from '../Components/MoviesGallery';
+
 import Paginator from '../Components/Paginator-generic';
 import { createMoviesObj, TMDBDiscover } from '../utils';
 
@@ -44,7 +45,9 @@ class Movies extends React.Component {
        
         return (
             <div >
-                <MoviesGallery moviesList={this.state.moviesList} />
+                <MoviesGallery 
+                galleryTitle="All movies"
+                moviesList={this.state.moviesList} />
                 <Paginator 
                 totalPages={this.state.totalPages} 
                 currentPage={this.state.currentPage}
