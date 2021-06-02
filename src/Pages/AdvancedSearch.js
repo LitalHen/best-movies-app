@@ -10,20 +10,14 @@ class AdvancedSearch extends React.Component{
             moviesArr: []
         }
     }
-
-    componentDidMount = (pageNum) => {
-        TMDBsearch({page:pageNum})
-        .then(res => {
-            console.log(res)
-            this.setState({
-                moviesArr: res
-            })
-        })
-    }
-
-    
+   
 
     render(){
+        const yearList = [];
+        const currentYear = new Date().getFullYear();
+        for(let i = currentYear; i >= currentYear - 120; i--){
+            yearList.push(<option>{i}</option>)
+        }
         return (
             <div>
                 <Container>
@@ -32,13 +26,14 @@ class AdvancedSearch extends React.Component{
                             <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" defaultValue="From Year">
                                 <option>From Year</option>
-                                <option>...</option>
+                                {yearList}
                             </Form.Control>
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridState">
                             <Form.Control as="select" defaultValue="To Year">
                                 <option>To Year</option>
-                                <option>...</option>
+                                {yearList}
+                                
                             </Form.Control>
                             </Form.Group>
                             <Form.Group as={Col} controlId="formGridState">
