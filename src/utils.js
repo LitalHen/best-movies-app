@@ -1,4 +1,4 @@
-import { API_KEY, DISNEY_ID } from "./constants";
+import { API_KEY, DISNEY_ID } from './constants';
 
 export const TMDBDiscover = (params) => {
     // Params will be a {key: value} where the key is the api key
@@ -11,30 +11,72 @@ export const TMDBDiscover = (params) => {
         queries += '&' + key + '=' + params[key]
     }
     return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&include_adult=false&include_video=true&with_companies=${DISNEY_ID}${queries}`)
-          .then((stream)=> stream.json())
+    .then((res) => res.json());
 }
+
+export const TMDBsearch = (maxPages) => {
+    let promiseArr= [];
+    // let pages = maxPages - 1;
+    for (let i = 1; i <= maxPages; i++) {
+       promiseArr.push(  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&include_adult=false&include_video=true&with_companies=${DISNEY_ID}&page=${i}`)
+       .then(res=>  res.json()))
+       console.log(promiseArr);
+    }
+   
+// console.log(promiseArr);
+
+    return  Promise.all(promiseArr)
+    .then((jsonObjects)=> {  
+        let allMovies = []; 
+        // debugger
+        for (let i = 0; i < jsonObjects.length; i++) {
+           allMovies.push(jsonObjects[i].results)
+            
+        }
+
+        allMovies =  allMovies.flat();
+        //The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+        
+        /// in javascript - object
+
+        // const foundMovies = {};
+        // allMovies.filter(m => {
+        //     if(foundMovies[m.id]){
+        //         return false;
+        //     }
+        //     else{
+        //         foundMovies[m.id] = true;
+        //         return true;
+        //     }
+
+        // })
+
+        return allMovies;
+    });
+} 
 
 export const createMoviesObj = (listOfMovies) => {
-  const moviesObj= listOfMovies.results.map((movie)=>{
-                //Recieves list of movies from fetch
-                // return array of movies obj
-                return{
-                    movieId: movie.id,
-                    title: movie.original_title,
-                    laguage: movie.original_language,
-                    overview: movie.overview,
-                    releaseDate: movie.release_date,
-                    rate:movie.vote_average,
-                    runTime:movie.with_runtime,
-                    total_pages:movie.total_pages,
-                    popularity:movie.popularity,
-                    poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
-                      }
-
-               
-                 })
-                 return moviesObj;
-}
+    const moviesObj= listOfMovies.results.map((movie)=>{
+                  //Recieves list of movies from fetch
+                  // return array of movies obj
+                  return{
+                      movieId: movie.id,
+                      title: movie.original_title,
+                      laguage: movie.original_language,
+                      overview: movie.overview,
+                      releaseDate: movie.release_date,
+                      rate:movie.vote_average,
+                      runTime:movie.with_runtime,
+                      total_pages:movie.total_pages,
+                      popularity:movie.popularity,
+                      poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
+                        }
+  
+                 
+                   })
+                   return moviesObj;
+  }
 
  
 export  const  TMDBDetails = async (id)=>{
@@ -64,3 +106,4 @@ export  const  TMDBDetails = async (id)=>{
 
 
 
+// console.log(jsonObjects[pages].results

@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
-
 import {TMDBDiscover, useTMDBDiscover} from '../utils'; 
 import { Col, Container, Row } from 'react-bootstrap';
 import '../homePageStyle.css';
@@ -63,17 +62,20 @@ class HomePage extends React.Component{
     render(){
         return(
             <div>
+                <Carosale/>
                 <Container fluid className="top-remake-link">
-                <Carosale></Carosale>
 
                     <Row className="row-link">
+                    <Row className="row-link text-center">
                         <Col className="col-link" xs={10} md={8} lg={4}>
                             <NavLink to="/disney-classics">Disney Classics</NavLink>
                         </Col>
                         <Col className="col-link" xs={10} md={8} lg={4}>
                             <NavLink to="/disney-new">New Disney Movies</NavLink>
                         </Col>
+                    </Row> 
                     </Row>      
+     
                 </Container>
 
                 <Switch>
