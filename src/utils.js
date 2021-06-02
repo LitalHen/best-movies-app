@@ -44,26 +44,21 @@ export  const  TMDBDetails = async (id)=>{
     const tmdbDetails = await tmdbStream[0].json();
     const tmdbvideo = await tmdbStream[1].json();
 
-
     let ImdbId= tmdbDetails.imdb_id;
     let omdbInfo= await fetch(`https://www.omdbapi.com/?apikey=de97b29a&i=${ImdbId}`)
-    let omdbDetails=await omdbInfo.json();
-   
+    const omdbDetails=await omdbInfo.json();
 
-    
-    return {    movieId: movie.id,
-                title:tmdbDetails.original_title,
+    console.log(omdbDetails)
+    return {    title:tmdbDetails.original_title,
                 laguage: tmdbDetails.spoken_languages,
-                overview: movie.overview,
-                year: omdbDetails.year,
-                rating:omdbDetails.imdbRating,
+                year: omdbDetails.Year,
+                rating:omdbDetails.ImdbRating,
                 runTime:tmdbDetails.runtime,
                 Plot:omdbDetails.Plot,
-                popularity:movie.popularity,
                 tagLine:tmdbDetails.tagline,
-                genre:omdbDetails.genre,
-                director:omdbDetails.director,
-                poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${tmdbDetails.backdrop_path}`,
+                genre:omdbDetails.Genre,
+                director:omdbDetails.Director,
+                poster_path: `https://themoviedb.org/t/p/w400/${tmdbDetails.backdrop_path}`,
       }
     }
 

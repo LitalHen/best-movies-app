@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import {  Tabs,Tab, Container } from 'react-bootstrap'
+import { withRouter } from 'react-router';
 import { TMDBDetails, TMDBDiscover,} from '../utils';
 
-export default class DetailesPage extends Component {
+ class DetailesPage extends React.Component {
     constructor(props){
         super(props);
        
@@ -12,12 +13,16 @@ export default class DetailesPage extends Component {
 
         }
 
+
+        // let movie = this.props.match.params.movieid
         
     }
 
  componentDidMount(){
-    
-    let currentMovieID = this.props.match.params.movieId;  
+   
+
+    let currentMovieID =this.props.match.params.movieId; 
+ 
         TMDBDetails(currentMovieID).then((res) =>{
           
         this.setState({currentMovie:res}) 
@@ -28,12 +33,11 @@ export default class DetailesPage extends Component {
     
     render() {
        
-        console.log('details page')
-
+        console.log(this.state.currentMovie)
          
         return (
             <div className="detailsPage">
-                <img src={`https://themoviedb.org/t/p/w500//9YAVIwBcBrLXeukg2dgMGfYB1uu.jpg`}></img>
+                <img src={this.state.currentMovie.poster_path}></img>
                 <Container>
 
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
@@ -71,3 +75,6 @@ export default class DetailesPage extends Component {
         )
     }
 }
+
+
+export default withRouter(DetailesPage)

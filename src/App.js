@@ -4,17 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainNavbar from './Components/Navbar-main';
-
+import DetailesPage from './Pages/DetailesPage';
 
 function App() {
   return (
     <div>
-      
+      {/*/this.movieId = this.props.match.params.movieId;*/}
+
       <HashRouter>
-      <MainNavbar/>
-        
-        <Route exact path={['/','/disney-classics','/disney-new']}>
+        <Route exact path="/movies/:movieId">
+          <DetailesPage></DetailesPage>
+        </Route>
+        <Route exact path="/">
           <Homepage/>
         </Route>
         <Route exact path="/movies">
