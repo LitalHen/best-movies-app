@@ -110,7 +110,7 @@ class SearchBox extends React.Component {
             <div>
             <div className="search-box">                                                        
             {/* Nullish coalescing operator (??)  if   this.props.placeholder  is undefined will show text "Please remember to pass props"*/}
-            <Form.Control className="form-control" onChange={this.updateText} value={this.state.searchText} placeholder={"Please enter your query"}/>
+            <Form.Control className="search-form-control" onChange={this.updateText} value={this.state.searchText} placeholder={"Please enter your query"}/>
             <Link to={`/search-page/${this.state.searchText}`}><Button className="search-btn">Search</Button></Link>
             </div>
             <ListGroup  className="search-listgroup" >                                                                     
