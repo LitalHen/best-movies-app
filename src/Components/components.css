@@ -9,23 +9,52 @@
     margin-right: 8px;
     margin-top: -5px;
 }
+
 .logo-img img {
     width: 100%;
 }
 
 
-.col-link{
+.top-remake-link {
 
-   max-width:13% !important;
+    margin-top: 10rem;
 }
 
-.row-link{
+.col-link {
+
+    max-width: 13% !important;
+}
+
+.row-link {
 
     justify-content: center;
 }
 
-.nav-bar{
+.nav-bar {
 
     margin-right: 10px;
 
+}
+
+.display-none {
+    display: none;
+
+}
+
+.search-listgroup {
+    position: absolute;
+    width: 20rem;
+}
+
+.search-box {
+    display: flex;
+
+}
+
+.form-control {
+    width: 20rem;
+}
+
+.search-btn {
+    margin-left: 5px;
 }
