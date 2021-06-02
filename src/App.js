@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DetailesPage from './Pages/DetailesPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
-import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/Searchpage';
 import AdvancedSearch from './Pages/AdvancedSearch';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
       {/*/this.movieId = this.props.match.params.movieId;*/}
 
       <HashRouter>
+        <MainNavbar></MainNavbar>
         <Route exact path="/movies/:movieId">
           <DetailesPage></DetailesPage>
         </Route>

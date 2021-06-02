@@ -36,15 +36,11 @@ import YouTube from 'react-youtube';
 console.log(this.state.currentMovie.video)
         return (
             <div className="detailsPage">
-                <Container sm={12} md={6} lg={3}>
-                <Row>
-                    <Col xs={6} md={3}>
-                        <Image className="movie-img" src={this.state.currentMovie.poster_path} ></Image>
-                        </Col>
-                </Row>
+                <div className="tagLine">                        {this.state.currentMovie.tagLine} </div>
 
-               <YouTube videoId={this.state.currentMovie.video}/>;
-
+                <div className="upperDits">
+                    <YouTube videoId={this.state.currentMovie.video}/>;
+                    
                 <Card style={{ width: '30rem' }}>
                     <Card.Body>
                         <Card.Title>{this.state.currentMovie.title}</Card.Title>
@@ -56,27 +52,37 @@ console.log(this.state.currentMovie.video)
                         <Card.Text>
                         Rated {this.state.currentMovie.rating}/10
                         </Card.Text>
+                        <Card.Text>
+                       Directed by: {this.state.currentMovie.director}
+                        </Card.Text>
+                        <Card.Text>
+
+                        </Card.Text>
+                        <Card.Text>
+
+                        </Card.Text>
+                        <Card.Text>
+                        {this.state.currentMovie.genre}
+                        </Card.Text>
+
                     </Card.Body>
                     </Card>
-                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-                    {/* //tmdbDetails,omdbDetails,tmdbvideo */}
+                    </div>
+                    <div className="downDits">
 
- <Tab eventKey="Genre" title="Genre">
-  <div>{this.state.currentMovie.genre}</div> 
-  </Tab><Tab eventKey="Director" title="Director">
-  <div>{this.state.currentMovie.director}</div> 
-  </Tab><Tab eventKey="Tag line" title="Tag line">
-  <div>{this.state.currentMovie.tagLine}</div> 
-  {/* </Tab><Tab eventKey="Trailers" title="Trailers">
-  <div>{this.state.currentMovie.Trailers}</div>  */}
-  </Tab><Tab eventKey="Language" title="Language">
-  <div>{this.state.currentMovie.language}</div> 
-  </Tab><Tab eventKey="Actors" title="Actors">
-  </Tab>
-  
-</Tabs>
-</Container>
- 
+                    <Card style={{ width: '30rem' }}>
+                    <Card.Body>
+                    <Card.Title> <div>{this.state.currentMovie.plot}</div></Card.Title>
+
+    </Card.Body>
+    </Card>
+<div>
+
+<Image className="movie-img" src={this.state.currentMovie.poster_path} ></Image>
+</div>
+</div >
+<div>{this.state.currentMovie.language}</div> 
+
             </div>
         )
     }

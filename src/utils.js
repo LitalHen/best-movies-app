@@ -100,7 +100,7 @@ export  const  TMDBDetails = async (id)=>{
                 tagLine:tmdbDetails.tagline,
                 genre:omdbDetails.Genre,
                 director:omdbDetails.Director,
-                poster_path: `https://themoviedb.org/t/p/w400/${tmdbDetails.backdrop_path}`,
+                poster_path: `https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`,
                 video: tmdbvideo.results[0]["key"]
       }
     }
