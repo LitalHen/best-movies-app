@@ -43,7 +43,7 @@ componentDidMount = () =>{
              )
         
       }}}
-        return (    <Carousel>
+        return (    <Carousel className="mt-3">
                     {newCarouselArr} 
                     </Carousel>        ) 
 
