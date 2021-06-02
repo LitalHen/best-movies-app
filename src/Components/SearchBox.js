@@ -100,7 +100,14 @@ class SearchBox extends React.Component {
              onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}
             onClick= {() =>  {window.location.href = `movies/${dataItem.id}`}}
              >
-              {dataItem.original_title}
+             <div className="search-box-info">
+            <div>
+            <img className="search-box-image" src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${dataItem.poster_path}`}/>
+            </div>
+            <div>
+            <p>{dataItem.original_title}</p>
+            </div>
+            </div>
             </ListGroup.Item>
         });
         
@@ -113,7 +120,7 @@ class SearchBox extends React.Component {
             <Form.Control className="form-control" onChange={this.updateText} value={this.state.searchText} placeholder={"Please enter your query"}/>
             <Link to={`/search-page/${this.state.searchText}`}><Button className="search-btn">Search</Button></Link>
             </div>
-            <ListGroup  className="search-listgroup" >                                                                     
+            <ListGroup  className="search-listgroup">                                                                     
                 {searchResults}
             </ListGroup>
         

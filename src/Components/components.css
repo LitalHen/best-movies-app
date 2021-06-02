@@ -54,3 +54,12 @@
 .search-btn {
     margin-left: 5px;
 }
+
+.search-box-image {
+    width: 7rem;
+    height: 7rem;
+}
+
+.search-box-info {
+    display: flex;
+}
