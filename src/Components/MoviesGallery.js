@@ -26,14 +26,13 @@ class MoviesGallery extends React.Component{
         
              )
          })
-        console.log(this.props.moviesList)
+       
         return(
             <div >
-                movies gallery
-                
+               <Row className="mx-0 center-text">"<h3>{this.props.galleryTitle}</h3></Row> 
             <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 my-2">
               {movieCards}
-              </Row>
+            </Row>
           </div>
             )
         }

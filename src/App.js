@@ -4,12 +4,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MainNavbar from './Components/Navbar-main';
+
 
 function App() {
   return (
     <div>
+      
       <HashRouter>
-        <Route exact path="/">
+      <MainNavbar/>
+        
+        <Route exact path={['/','/disney-classics','/disney-new']}>
           <Homepage/>
         </Route>
         <Route exact path="/movies">
