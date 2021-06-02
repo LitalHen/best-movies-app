@@ -11,7 +11,8 @@ class Movies extends React.Component {
         this.state={
             moviesList:[],
             totalPages:1,
-            currentPage:1
+            currentPage:1,
+            mSorted:[]
 
         }
     }
@@ -23,8 +24,10 @@ class Movies extends React.Component {
         this.choosePage(pageNum);
 
     }
+
     choosePage = (pageNum) => {
-        TMDBDiscover({page:pageNum})
+        const releaseDate='vote_average.desc';
+        TMDBDiscover({sort_by:releaseDate,page:pageNum})
         .then((listOfMovies)=>{
             if( listOfMovies && listOfMovies.results){
             const pages=listOfMovies.total_pages;
@@ -38,16 +41,43 @@ class Movies extends React.Component {
                    
             })
     }
+   
     componentDidMount = () =>{
+    
+//const releaseDate='release_date.desc';
+// const releaseDate='vote_average.desc';
+// TMDBDiscover({sort_by:releaseDate,page:1})
+//         .then((listOfMovies)=>{
+//             if( listOfMovies && listOfMovies.results){
+//             const pages=listOfMovies.total_pages;
+//             const moviesSorted = createMoviesObj(listOfMovies);
+//                 // console.log('pages: '+pages)
+//                 // console.log('sort by date'+moviesSorted)
+//                 this.setState({
+//                     mSorted:moviesSorted
+//                     })
+//         }
+                   
+//     })
+    
+    
+   
         this.choosePage(this.state.currentPage);
     }
+
+
+
     render() {
-       
+        // const checkSort=this.state.mSorted.map((movie,id)=> {
+        //     return movie.rate;
+        //  })
+        //  console.log('check sort by year'+ checkSort)
         return (
             <div >
                 <MoviesGallery 
                 galleryTitle="All movies"
-                moviesList={this.state.moviesList} />
+                moviesList={this.state.moviesList}
+                 />
                 <Paginator 
                 totalPages={this.state.totalPages} 
                 currentPage={this.state.currentPage}
