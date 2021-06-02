@@ -14,10 +14,6 @@
     width: 100%;
 }
 
-.top-remake-link {
-
-    margin-top: 10rem;
-}
 
 .col-link {
 
@@ -43,6 +39,7 @@
 .search-listgroup {
     position: absolute;
     width: 20rem;
+    z-index: 5;
 }
 
 .search-box {
