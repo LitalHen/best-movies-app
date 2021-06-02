@@ -16,7 +16,7 @@ class MovieThumbnail extends React.Component{
                 return(
                     <div className='p-movies-page'>
                         <CardDeck>
-                       <Card className="text-center"  >
+                       <Card className="card-design text-center"  >
                             <Link to={`/movies/${this.props.movieId}`}>
                             <Card.Img variant="top" src={this.props.poster_path } alt={this.props.title}/>  
                             <div className="card-img-overlay">     
@@ -26,7 +26,7 @@ class MovieThumbnail extends React.Component{
                                 </div>  
                                 </div>
                             </Link> 
-                            <h5 className="min-height">{this.props.title}</h5>  
+                            <h5 className="min-height p-1">{this.props.title}</h5>  
                             {/* <div> popularity:{this.props.popularity}</div> */}
                             
                           

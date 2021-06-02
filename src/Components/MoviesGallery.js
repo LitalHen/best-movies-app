@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import MovieThumbnail from './MovieThumbnail';
 import './MovieThumbnail.css';
 
@@ -29,10 +29,17 @@ class MoviesGallery extends React.Component{
        
         return(
             <div >
-               <Row className="mx-0 center-text">"<h3>{this.props.galleryTitle}</h3></Row> 
-            <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 my-2">
-              {movieCards}
-            </Row>
+                 <Container>
+               <Row className="mx-0 text-center">
+                   <Col>
+                   <h3 className="text-center">{this.props.galleryTitle}
+                   </h3>
+                   </Col>
+                </Row> 
+                <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 my-2">
+                 {movieCards}
+                </Row>
+                </Container>
           </div>
             )
         }
