@@ -18,11 +18,11 @@ class MovieThumbnail extends React.Component{
                         <CardDeck>
                        <Card className="text-center"  >
                             <Link to={`/movies/${this.props.movieId}`}>
-                            <Card.Img variant="top" src={this.props.poster_path }/>  
+                            <Card.Img variant="top" src={this.props.poster_path } alt={this.props.title}/>  
                             <div className="card-img-overlay">     
                                 <div className="position-badge">            
                                 <div className="badge badge-light badge-right">{yearMovie}</div>
-                                <div className="badge badge-light badge-left"><i class="fas fa-star"></i>{this.props.rate}</div>
+                                <div className="badge badge-light badge-left"><i className="fas fa-star color-star pr-1"></i>{this.props.rate}</div>
                                 </div>  
                                 </div>
                             </Link> 
