@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {  Tabs,Tab, Container, Row, Col, Image, Card } from 'react-bootstrap'
 import { withRouter } from 'react-router';
 import { TMDBDetails, TMDBDiscover,} from '../utils';
+import YouTube from 'react-youtube';
 
  class DetailesPage extends React.Component {
     constructor(props){
@@ -32,7 +33,7 @@ import { TMDBDetails, TMDBDiscover,} from '../utils';
    
     
     render() {
-
+console.log(this.state.currentMovie.video)
         return (
             <div className="detailsPage">
                 <Container sm={12} md={6} lg={3}>
@@ -42,7 +43,8 @@ import { TMDBDetails, TMDBDiscover,} from '../utils';
                         </Col>
                 </Row>
 
-               
+               <YouTube videoId={this.state.currentMovie.video}/>;
+
                 <Card style={{ width: '30rem' }}>
                     <Card.Body>
                         <Card.Title>{this.state.currentMovie.title}</Card.Title>
