@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import MovieThumbnail from './MovieThumbnail';
 import './MovieThumbnail.css';
 
@@ -12,13 +12,11 @@ class MoviesGallery extends React.Component{
     render(){
         const movieCards =  this.props.moviesList.map((movie,id)=> {
         const checkPoster = movie.poster_path.includes('null');
-            return (
-            
-      
-             <Col className="py-2" key={id} lg={2} md={3} sm={6} >
+            return ( 
+             <Col className="py-2 col-6" key={id}  >
             <MovieThumbnail
              movieId={movie.movieId}
-             poster_path={(!checkPoster) ? movie.poster_path : 'https://picsum.photos/id/1/200/300?grayscale'}
+             poster_path={(!checkPoster) ? movie.poster_path : './No_image.png'}
              rate={movie.rate}
              title={movie.title}
              popularity={movie.popularity}
@@ -28,12 +26,20 @@ class MoviesGallery extends React.Component{
         
              )
          })
-        console.log(this.props.moviesList)
+       
         return(
-            <div >               
-            <Row className="mx-0">
-              {movieCards}
-            </Row>
+            <div >
+                 <Container>
+               <Row className="mx-0 text-center">
+                   <Col>
+                   <h3 className="text-center">{this.props.galleryTitle}
+                   </h3>
+                   </Col>
+                </Row> 
+                <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 my-2">
+                 {movieCards}
+                </Row>
+                </Container>
           </div>
             )
         }

@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
 import SearchPage from './Pages/SearchPage';
-
+import AdvancedSearch from './Pages/AdvancedSearch';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
           <Movies/>
         </Route>
         <Route exact path="/advanced-search">
-
+          <AdvancedSearch/>
         </Route>
         <Route exact path="/search-page/:text">
         <SearchPage></SearchPage>
