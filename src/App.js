@@ -5,6 +5,7 @@ import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
+import AdvancedSearch from './Pages/AdvancedSearch';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Movies/>
         </Route>
         <Route exact path="/advanced-search">
-
+          <AdvancedSearch/>
         </Route>
 
       </HashRouter>
