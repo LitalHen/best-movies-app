@@ -59,6 +59,7 @@ export  const  TMDBDetails = async (id)=>{
                 genre:omdbDetails.Genre,
                 director:omdbDetails.Director,
                 poster_path: `https://themoviedb.org/t/p/w400/${tmdbDetails.backdrop_path}`,
+                video: tmdbvideo.results[0]["key"]
       }
     }
 
