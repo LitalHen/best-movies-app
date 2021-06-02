@@ -47,14 +47,14 @@ export  const  TMDBDetails = async (id)=>{
     let ImdbId= tmdbDetails.imdb_id;
     let omdbInfo= await fetch(`https://www.omdbapi.com/?apikey=de97b29a&i=${ImdbId}`)
     const omdbDetails=await omdbInfo.json();
-
-    console.log(omdbDetails)
+    
+    console.log(tmdbDetails.spoken_languages)
     return {    title:tmdbDetails.original_title,
-                laguage: tmdbDetails.spoken_languages,
+        laguage: tmdbDetails.spoken_languages,
                 year: omdbDetails.Year,
-                rating:omdbDetails.ImdbRating,
+                rating: omdbDetails.imdbRating,
                 runTime:tmdbDetails.runtime,
-                Plot:omdbDetails.Plot,
+                plot:omdbDetails.Plot,
                 tagLine:tmdbDetails.tagline,
                 genre:omdbDetails.Genre,
                 director:omdbDetails.Director,
