@@ -3,13 +3,14 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
-import Searchpage from './Pages/Searchpage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
+import SearchPage from './Pages/SearchPage';
 
 
 function App() {
+
   return (
     <div>
       
@@ -25,8 +26,8 @@ function App() {
         <Route exact path="/advanced-search">
 
         </Route>
-        <Route exact path="/search-page">
-        <Searchpage></Searchpage>
+        <Route exact path="/search-page/:text">
+        <SearchPage></SearchPage>
         </Route>
 
       </HashRouter>

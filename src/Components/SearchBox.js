@@ -2,11 +2,12 @@
 // import { Card, ListGroup, Button, Form } from 'bootstrap-react';
 import React from 'react';
 import { Card, ListGroup, Button, Form  } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { TMDBDiscover, TMDBsearch } from '../utils';
 
 
 
-class SearchPage extends React.Component {
+class SearchBox extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -92,20 +93,33 @@ class SearchPage extends React.Component {
     
     render() {
         const searchResults = this.state.movieArray.filter((obj) => { return obj.title.toUpperCase().includes(this.state.searchText.toUpperCase()); }).map((dataItem, index) => {
-            return  <ListGroup.Item action key={index} onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}>{dataItem.original_title}</ListGroup.Item>
+            return  <ListGroup.Item  
+            className={this.state.searchText === '' ? "display-none" : null}
+             action
+             key={index}
+             onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}
+            onClick= {() =>  {window.location.href = `movies/${dataItem.id}`}}
+             >
+              {dataItem.original_title}
+            </ListGroup.Item>
         });
         
+
         // this.search(5)
         return (
+            <div>
             <div className="search-box">                                                        
             {/* Nullish coalescing operator (??)  if   this.props.placeholder  is undefined will show text "Please remember to pass props"*/}
-         
-            <ListGroup>                                                                     
+            <Form.Control className="form-control" onChange={this.updateText} value={this.state.searchText} placeholder={"Please enter your query"}/>
+            <Link to={`/search-page/${this.state.searchText}`}><Button className="search-btn">Search</Button></Link>
+            </div>
+            <ListGroup  className="search-listgroup" >                                                                     
                 {searchResults}
             </ListGroup>
+        
 
 
-                   Searchpage <br></br><br></br>
+                   {/* Searchpage <br></br><br></br>
       
             <br></br><br></br>
               <Card style={{ width: '18rem' }}>
@@ -116,14 +130,14 @@ class SearchPage extends React.Component {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="primary">Go somewhere</Button> */}
                         {/* <Button onClick={() => { const pageValue = prompt("Please enter page number"); this.setPage(pageValue);  }}>Change Page</Button> */}
-                  </Card.Body>
-              </Card>
+                  {/* </Card.Body> */}
+              {/* </Card> */}
           </div>
         )
     }
     
 }
 
-export default SearchPage;
+export default SearchBox;

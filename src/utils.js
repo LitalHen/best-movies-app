@@ -11,6 +11,7 @@ export const TMDBDiscover = (params) => {
         queries += '&' + key + '=' + params[key]
     }
     return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&include_adult=false&include_video=true&with_companies=${DISNEY_ID}${queries}`)
+    .then((res) => res.json());
 }
 
 export const TMDBsearch = (maxPages) => {
@@ -34,7 +35,7 @@ export const TMDBsearch = (maxPages) => {
         }
 
         allMovies =  allMovies.flat();
-        
+        //The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 
         
         /// in javascript - object
@@ -54,5 +55,27 @@ export const TMDBsearch = (maxPages) => {
         return allMovies;
     });
 } 
+
+export const createMoviesObj = (listOfMovies) => {
+    const moviesObj= listOfMovies.results.map((movie)=>{
+                  //Recieves list of movies from fetch
+                  // return array of movies obj
+                  return{
+                      movieId: movie.id,
+                      title: movie.original_title,
+                      laguage: movie.original_language,
+                      overview: movie.overview,
+                      releaseDate: movie.release_date,
+                      rate:movie.vote_average,
+                      runTime:movie.with_runtime,
+                      total_pages:movie.total_pages,
+                      popularity:movie.popularity,
+                      poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
+                        }
+  
+                 
+                   })
+                   return moviesObj;
+  }
 
 // console.log(jsonObjects[pages].results
