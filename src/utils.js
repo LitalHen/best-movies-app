@@ -36,3 +36,36 @@ export const createMoviesObj = (listOfMovies) => {
                  return moviesObj;
 }
 
+ 
+export  const  TMDBDetails = async (id)=>{
+    let movie =  fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
+    let video=  fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+    const tmdbStream = await Promise.all([movie, video]);
+    const tmdbDetails = await tmdbStream[0].json();
+    const tmdbvideo = await tmdbStream[1].json();
+
+
+    let ImdbId= tmdbDetails.imdb_id;
+    let omdbInfo= await fetch(`https://www.omdbapi.com/?apikey=de97b29a&i=${ImdbId}`)
+    let omdbDetails=await omdbInfo.json();
+   
+
+    
+    return {    movieId: movie.id,
+                title:tmdbDetails.original_title,
+                laguage: tmdbDetails.spoken_languages,
+                overview: movie.overview,
+                year: omdbDetails.year,
+                rating:omdbDetails.imdbRating,
+                runTime:tmdbDetails.runtime,
+                Plot:omdbDetails.Plot,
+                popularity:movie.popularity,
+                tagLine:tmdbDetails.tagline,
+                genre:omdbDetails.genre,
+                director:omdbDetails.director,
+                poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${tmdbDetails.backdrop_path}`,
+      }
+    }
+
+
+

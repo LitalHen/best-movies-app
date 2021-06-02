@@ -1,51 +1,67 @@
 import React, { Component } from 'react'
 import {  Tabs,Tab, Container } from 'react-bootstrap'
-import { TMDBDiscover } from '../utils';
+import { TMDBDetails, TMDBDiscover,} from '../utils';
 
 export default class DetailesPage extends Component {
     constructor(props){
         super(props);
-        this.movieId = 741074;
+       
+
+        this.state={
+            currentMovie:{}
+
+        }
 
         
     }
-    componentDIdMount(){
-        TMDBDiscover({id:this.movieId})
-    }
+
+ componentDidMount(){
+    
+    let currentMovieID = this.props.match.params.movieId;  
+        TMDBDetails(currentMovieID).then((res) =>{
+          
+        this.setState({currentMovie:res}) 
+     }
+   
+     )}
+   
     
     render() {
-    console.log(this.movieId)
+       
+        console.log('details page')
 
+         
         return (
             <div className="detailsPage">
                 <img src={`https://themoviedb.org/t/p/w500//9YAVIwBcBrLXeukg2dgMGfYB1uu.jpg`}></img>
                 <Container>
 
                 <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+                    {/* //tmdbDetails,omdbDetails,tmdbvideo */}
   <Tab eventKey="Title" title="Title">
-  <div>{}</div> 
+  <div>{this.state.currentMovie.title}</div> 
   </Tab>
   <Tab eventKey="Year" title="Year">
-<div></div> 
+<div>{this.state.currentMovie.year}</div> 
  </Tab>
   <Tab eventKey="Ratings" title="Ratings">
-  <div></div> 
+  <div>{this.state.currentMovie.rating}</div> 
   </Tab><Tab eventKey="Genre" title="Genre">
-  <div></div> 
+  <div>{this.state.currentMovie.genre}</div> 
   </Tab><Tab eventKey="Director" title="Director">
-  <div></div> 
+  <div>{this.state.currentMovie.director}</div> 
   </Tab><Tab eventKey="Run time" title="Run time">
-  <div></div> 
+  <div>{this.state.currentMovie.runTime}</div> 
   </Tab><Tab eventKey="Plot" title="Plot">
-  <div></div> 
+  <div>{this.state.currentMovie.plot}</div> 
   </Tab><Tab eventKey="Tag line" title="Tag line">
-  <div></div> 
-  </Tab><Tab eventKey="Trailers" title="Trailers">
-  <div></div> 
+  <div>{this.state.currentMovie.tagLine}</div> 
+  {/* </Tab><Tab eventKey="Trailers" title="Trailers">
+  <div>{this.state.currentMovie.Trailers}</div>  */}
   </Tab><Tab eventKey="Language" title="Language">
-  <div></div> 
+  <div>{this.state.currentMovie.rating}</div> 
   </Tab><Tab eventKey="Actors" title="Actors">
-  <div></div> 
+  <div>{this.state.currentMovie.rating}</div> 
   </Tab>
   
 </Tabs>

@@ -6,6 +6,7 @@ import {TMDBDiscover, useTMDBDiscover} from '../utils';
 import { Col, Container, Row } from 'react-bootstrap';
 import '../homePageStyle.css';
 import { Link } from 'react-router-dom';
+import Carosale from '../carosale/Carosale';
 
 
 class HomePage extends React.Component{
@@ -63,6 +64,8 @@ class HomePage extends React.Component{
         return(
             <div>
                 <Container fluid className="top-remake-link">
+                <Carosale></Carosale>
+
                     <Row className="row-link">
                         <Col className="col-link" xs={10} md={8} lg={4}>
                             <NavLink to="/disney-classics">Disney Classics</NavLink>
