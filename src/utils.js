@@ -21,10 +21,7 @@ export const TMDBsearch = (maxPages) => {
     for (let i = 1; i <= maxPages; i++) {
        promiseArr.push(  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&include_adult=false&include_video=true&with_companies=${DISNEY_ID}&page=${i}`)
        .then(res=>  res.json()))
-       console.log(promiseArr);
     }
-   
-// console.log(promiseArr);
 
     return  Promise.all(promiseArr)
     .then((jsonObjects)=> {  

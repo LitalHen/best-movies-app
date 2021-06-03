@@ -3,7 +3,6 @@
 import React from 'react';
 import { Card, ListGroup, Button, Form  } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
-import SearchPage from '../Pages/SearchPage';
 import { TMDBDiscover, TMDBsearch } from '../utils';
 
 
@@ -62,13 +61,10 @@ class SearchBox extends React.Component {
             </ListGroup.Item>
 
         });
-        
-        <SearchPage searchResults={this.state.searchText}></SearchPage>
-        // this.search(5)
+
         return (
             <div>
             <div className="search-box">                                                        
-            {/* Nullish coalescing operator (??)  if   this.props.placeholder  is undefined will show text "Please remember to pass props"*/}
             <Form.Control className="form-control" onChange={this.updateText} value={this.state.searchText} placeholder={"Please Enter Your Query"}/>
             <Link to={`/search-page/${this.state.searchText}`}><Button className="search-btn">Search</Button></Link>
             </div>
