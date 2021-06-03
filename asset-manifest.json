@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.c8ce1f2d.chunk.css",
-    "main.js": "/static/js/main.89ff5e3d.chunk.js",
-    "main.js.map": "/static/js/main.89ff5e3d.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.35beef84.js",
-    "runtime-main.js.map": "/static/js/runtime-main.35beef84.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.3d4d9857.chunk.js": "/static/js/2.3d4d9857.chunk.js",
-    "static/js/2.3d4d9857.chunk.js.map": "/static/js/2.3d4d9857.chunk.js.map",
-    "static/js/3.05fbe54e.chunk.js": "/static/js/3.05fbe54e.chunk.js",
-    "static/js/3.05fbe54e.chunk.js.map": "/static/js/3.05fbe54e.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.c8ce1f2d.chunk.css.map": "/static/css/main.c8ce1f2d.chunk.css.map",
-    "static/js/2.3d4d9857.chunk.js.LICENSE.txt": "/static/js/2.3d4d9857.chunk.js.LICENSE.txt"
+    "main.css": "/best-movies-app/static/css/main.db988ef4.chunk.css",
+    "main.js": "/best-movies-app/static/js/main.89ff5e3d.chunk.js",
+    "main.js.map": "/best-movies-app/static/js/main.89ff5e3d.chunk.js.map",
+    "runtime-main.js": "/best-movies-app/static/js/runtime-main.94231f0d.js",
+    "runtime-main.js.map": "/best-movies-app/static/js/runtime-main.94231f0d.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/best-movies-app/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.e5afd197.chunk.js": "/best-movies-app/static/js/2.e5afd197.chunk.js",
+    "static/js/2.e5afd197.chunk.js.map": "/best-movies-app/static/js/2.e5afd197.chunk.js.map",
+    "static/js/3.05fbe54e.chunk.js": "/best-movies-app/static/js/3.05fbe54e.chunk.js",
+    "static/js/3.05fbe54e.chunk.js.map": "/best-movies-app/static/js/3.05fbe54e.chunk.js.map",
+    "index.html": "/best-movies-app/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/best-movies-app/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.db988ef4.chunk.css.map": "/best-movies-app/static/css/main.db988ef4.chunk.css.map",
+    "static/js/2.e5afd197.chunk.js.LICENSE.txt": "/best-movies-app/static/js/2.e5afd197.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.35beef84.js",
+    "static/js/runtime-main.94231f0d.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.3d4d9857.chunk.js",
-    "static/css/main.c8ce1f2d.chunk.css",
+    "static/js/2.e5afd197.chunk.js",
+    "static/css/main.db988ef4.chunk.css",
     "static/js/main.89ff5e3d.chunk.js"
   ]
 }
