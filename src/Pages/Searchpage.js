@@ -102,6 +102,8 @@ class SearchPage extends React.Component {
             }
         )
      }
+
+    
     render() {
         let searchText = this.props.match.params.text
   
@@ -111,11 +113,11 @@ class SearchPage extends React.Component {
             return(
         <Col>
         <Card style={{ width: '9rem', borderRadius: '11px' }}>
-          <Link to={`/movies/${dataItem.id}`}><Card.Img  variant="top" src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${dataItem.poster_path}`}/></Link>
+          <Link to={`/movies/${dataItem.id}`}><Card.Img style={{ width: '9rem', borderRadius: '11px' }} variant="top" src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${dataItem.poster_path}`}/></Link>
             <Card.Body>
                 <Card.Title>{dataItem.original_title}</Card.Title>
                 <Card.Text>
-                Click on the picture for more details 
+                   Click on the picture for more details 
                 </Card.Text>
   
           </Card.Body>
@@ -125,7 +127,6 @@ class SearchPage extends React.Component {
               });
         return (
             <div className="search-page">  
-
             <h1 className="search-header">Search Results</h1>
             <Container>                                                      
              <Row>                                                                  

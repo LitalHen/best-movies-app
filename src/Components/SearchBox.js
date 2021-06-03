@@ -2,7 +2,7 @@
 // import { Card, ListGroup, Button, Form } from 'bootstrap-react';
 import React from 'react';
 import { Card, ListGroup, Button, Form  } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SearchPage from '../Pages/SearchPage';
 import { TMDBDiscover, TMDBsearch } from '../utils';
 
@@ -33,37 +33,13 @@ class SearchBox extends React.Component {
     // }  
     
  
-    
-
-    // componentDidMount = () => {     // put change text var instead of adam
-    //     fetch("https://api.themoviedb.org/3/search/movie?api_key=1ee3645441ba4ed79b9da803ead5ce9a&query=adam")
-    //     .then((res) =>  res.json())          
-    //     .then(data =>  console.log(data))
-    //      .catch((err) => {
-    //         alert('the ajax call has failed')
-    //         console.log(err)
-    //       })
-    //   }
-
- 
-     
-    
-    //     const objOfMovie = data.map((movie) => { 
-    //        return{
-    //         title: movie.original_title,
-    //         language: movie.original_language,
-    //         overview: movie.overview,
-    //         releaseDate: movie.release_date,
-    //         rate: movie.vote_average,
-    //         total_pages: movie.total_pages,
-    //         popularity: movie.popularity,
-    //        }
-    //     })
-    
-            
-
-    // }
-    
+    chooseMovie = (id) => {
+        
+        window.location.href = `/#/movies/${id}`
+        this.setState({
+            searchText:'',
+        })
+    }
 
     updateText = (event) =>{
         const val = event.target.value;
@@ -73,25 +49,13 @@ class SearchBox extends React.Component {
         });
         TMDBsearch(5).then(allMoviesResults => 
             {
-           
                 this.setState(
                 {
                     movieArray: allMoviesResults,
                 })
             }
         )
-console.log(this.state.movieArray);
-        // update the parent component 
-        // this.props.onSearchChanged(val);
     }
-    // resultSelected = (index) => {
-    //     this.props.onResultSelected(index);
-    //     this.setState({
-    //         searchText: ''
-    //     });
-    //     // this.props.onSearchChanged('');
-    // }
-    
     render() {
         const searchResults = this.state.movieArray.filter((obj) => { return obj.title.toUpperCase().includes(this.state.searchText.toUpperCase()); }).map((dataItem, index) => {
             return  <ListGroup.Item  
@@ -99,7 +63,7 @@ console.log(this.state.movieArray);
              action
              key={index}
              onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}
-              onClick= {() =>  {window.location.href = `/#/movies/${dataItem.id}`}}
+              onClick= {() => this.chooseMovie(dataItem.id)}
              >
              <div className="search-box-info">
             <div>
@@ -110,6 +74,7 @@ console.log(this.state.movieArray);
             </div>
             </div>
             </ListGroup.Item>
+
         });
         
         <SearchPage searchResults={this.state.searchText}></SearchPage>
@@ -130,4 +95,4 @@ console.log(this.state.movieArray);
     
 }
 
-export default SearchBox;
+export default withRouter(SearchBox);
