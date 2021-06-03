@@ -41,6 +41,17 @@ class SearchBox extends React.Component {
             }
         )
     }
+    openSearchPage = () => {
+        
+        window.location.href = `#/search-page/${this.state.searchText}`
+        this.setState(
+            {
+                searchText: '',
+                movieArray: []
+            }
+        )
+        
+    }
     render() {
         const searchResults = this.state.movieArray.filter((obj) => { return obj.title.toUpperCase().includes(this.state.searchText.toUpperCase()); }).map((dataItem, index) => {
             return  <ListGroup.Item  
@@ -66,7 +77,7 @@ class SearchBox extends React.Component {
             <div>
             <div className="search-box">                                                        
             <Form.Control className="form-control" onChange={this.updateText} value={this.state.searchText} placeholder={"Please Enter Your Query"}/>
-            <Link to={`/search-page/${this.state.searchText}`}><Button className="search-btn">Search</Button></Link>
+            <Button onClick= { this.openSearchPage}className="search-btn">Search</Button>
             </div>
             <ListGroup  className="search-listgroup">                                                                     
                 {searchResults}

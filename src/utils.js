@@ -88,10 +88,10 @@ export  const  TMDBDetails = async (id)=>{
     let omdbInfo= await fetch(`https://www.omdbapi.com/?apikey=de97b29a&i=${ImdbId}`)
     const omdbDetails=await omdbInfo.json();
     
-    const language=tmdbDetails.spoken_languages.map(item=>item.english_name)
-    const rating= omdbDetails.Ratings.map((rating)=>{
+    const language=tmdbDetails.spoken_languages ? tmdbDetails.spoken_languages.map(item=>item.english_name) : null
+    const rating= omdbDetails.Ratings ? omdbDetails.Ratings.map((rating)=>{
         return <>{ rating.Source} {rating.Value}</>
-    })
+    }) : null;
 
     return { 
                title:tmdbDetails.original_title,
@@ -104,7 +104,7 @@ export  const  TMDBDetails = async (id)=>{
                 director:omdbDetails.Director,
                 language:language,
                 poster_path: `https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`,
-                video: (tmdbvideo.results[0]["key"])?tmdbvideo.results[0]["key"]:`https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`
+                video: (tmdbvideo && tmdbvideo.results && tmdbvideo.results[0] && tmdbvideo.results[0]["key"])?tmdbvideo.results[0]["key"]:`https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`
       }
     }
 
