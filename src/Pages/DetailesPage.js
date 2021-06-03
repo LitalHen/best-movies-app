@@ -13,10 +13,11 @@ import YouTube from 'react-youtube';
             isLoading:true
 
         }
-        
+   
     }
 
  componentDidMount(){
+ 
 
     let currentMovieID =this.props.match.params.movieId; 
  

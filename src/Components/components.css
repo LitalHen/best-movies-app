@@ -48,6 +48,7 @@ background: linear-gradient(0deg, rgba(9,9,121,1) 0%, rgba(41,123,191,1) 35%, rg
 .search-listgroup {
     position: absolute;
     width: 20rem;
+    z-index: 5;
 }
 
 .search-box {
@@ -61,4 +62,13 @@ background: linear-gradient(0deg, rgba(9,9,121,1) 0%, rgba(41,123,191,1) 35%, rg
 
 .search-btn {
     margin-left: 5px;
+}
+
+.search-box-image {
+    width: 7rem;
+    height: 7rem;
+}
+
+.search-box-info {
+    display: flex;
 }
