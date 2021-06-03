@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DetailesPage from './Pages/DetailesPage';
+import DetailsPage from './Pages/DetailsPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
 import SearchPage from './Pages/Searchpage';
@@ -29,7 +29,7 @@ class App extends React.Component {
      <HashRouter>
         <MainNavbar></MainNavbar>
         <Route exact path="/movies/:movieId">
-          <DetailesPage></DetailesPage>
+          <DetailsPage></DetailsPage>
         </Route>
         <Route exact path="/">
           <Homepage/>

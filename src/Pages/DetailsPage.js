@@ -4,18 +4,20 @@ import { withRouter } from 'react-router';
 import { TMDBDetails, TMDBDiscover,} from '../utils';
 import YouTube from 'react-youtube';
 
- class DetailesPage extends React.Component {
+ class DetailsPage extends React.Component {
     constructor(props){
         super(props);
        
         this.state={
             currentMovie:{},
-            isLoading:true
+            isLoading:true,
+            movieId:0
 
         }
    
     }
 
+    
  componentDidMount(){
  
 
@@ -23,13 +25,29 @@ import YouTube from 'react-youtube';
  
         TMDBDetails(currentMovieID).then((res) =>{
           
-                     this.setState({currentMovie:res})
+                     this.setState({currentMovie:res,
+                                    movieId: currentMovieID
+                                })
                  }
    
           )
      }
    
-    
+     componentDidUpdate(){
+ 
+        if (this.props.match.params.movieId != this.state.currentMovieID){
+            
+            let newMovieID =this.props.match.params.movieId; 
+     
+            TMDBDetails(newMovieID).then((res) =>{
+              
+                         this.setState({currentMovie:res})
+                     })
+        }
+              
+         }
+   
+         
     render() {
         return (
                 <div className="detailsPage">
@@ -68,4 +86,4 @@ import YouTube from 'react-youtube';
 }
 
 
-export default withRouter(DetailesPage)
+export default withRouter(DetailsPage)
