@@ -35,18 +35,18 @@ class MoviesGallery extends React.Component{
         return(
             <div >
                  <Container>
-               <Row className="mx-0 text-center">
+               <Row className="mx-0 text-center ">
                    <Col>
-                   <h3 className="text-center">{this.props.galleryTitle}
+                   <h3 className="text-center my-3">{this.props.galleryTitle}
                    </h3>
                    </Col>
                 </Row> 
-                <Row className={this.props.showSort ?"mx-0 text-center" : "mx-0 text-center display-none" }>
+                <Row className={this.props.showSort ?"mx-0 mt-3 text-center" : "mx-0 mb-0 mt-3 text-center display-none" }>
                    <Col>
                    <SortMovies sortByValue={this.props.sortByValue}/>
                    </Col>
                 </Row> 
-                <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 my-2">
+                <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 mb-4">
                  {movieCards}
                 </Row>
                 </Container>
