@@ -1,11 +1,11 @@
 import React from 'react'
 import {NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
-import Carosale from '../carosale/Carosale'
 import {TMDBDiscover, useTMDBDiscover} from '../utils'; 
 import { Col, Container, Row } from 'react-bootstrap';
 import '../homePageStyle.css';
 import { Link } from 'react-router-dom';
+import Carosale from '../carosale/Carosale';
 
 
 class HomePage extends React.Component{
@@ -64,6 +64,8 @@ class HomePage extends React.Component{
             <div>
                 <Carosale/>
                 <Container fluid className="top-remake-link">
+
+                    <Row className="row-link">
                     <Row className="row-link text-center">
                         <Col className="col-link" xs={10} md={8} lg={4}>
                             <NavLink to="/disney-classics">Disney Classics</NavLink>
@@ -71,7 +73,9 @@ class HomePage extends React.Component{
                         <Col className="col-link" xs={10} md={8} lg={4}>
                             <NavLink to="/disney-new">New Disney Movies</NavLink>
                         </Col>
+                    </Row> 
                     </Row>      
+     
                 </Container>
 
                 <Switch>

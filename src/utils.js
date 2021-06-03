@@ -12,6 +12,7 @@ export const TMDBDiscover = (params) => {
     }
     return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&include_adult=false&include_video=true&with_companies=${DISNEY_ID}${queries}`)
     .then((res) => res.json());
+    
 }
 
 export const TMDBsearch = (maxPages) => {
@@ -73,9 +74,43 @@ export const createMoviesObj = (listOfMovies) => {
                       poster_path: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
                         }
   
-                 
+                  
                    })
                    return moviesObj;
   }
 
-// console.log(jsonObjects[pages].results
+ 
+export  const  TMDBDetails = async (id)=>{
+    let movie =  fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
+    let video=  fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+    const tmdbStream = await Promise.all([movie, video]);
+    const tmdbDetails = await tmdbStream[0].json();
+    const tmdbvideo = await tmdbStream[1].json();
+
+    let ImdbId= tmdbDetails.imdb_id;
+    let omdbInfo= await fetch(`https://www.omdbapi.com/?apikey=de97b29a&i=${ImdbId}`)
+    const omdbDetails=await omdbInfo.json();
+    
+    const language=tmdbDetails.spoken_languages.map(item=>item.english_name)
+    const rating= omdbDetails.Ratings.map((rating)=>{
+        return <>{ rating.Source} {rating.Value}</>
+    })
+
+    return { 
+               title:tmdbDetails.original_title,
+                year: omdbDetails.Year,
+                rating: rating,
+                runTime:tmdbDetails.runtime,
+                plot:omdbDetails.Plot,
+                tagLine:tmdbDetails.tagline,
+                genre:omdbDetails.Genre,
+                director:omdbDetails.Director,
+                language:language,
+                poster_path: `https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`,
+                video: (tmdbvideo.results[0]["key"])?tmdbvideo.results[0]["key"]:`https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`
+      }
+    }
+
+
+
+
