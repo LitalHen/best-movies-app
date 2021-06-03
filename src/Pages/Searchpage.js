@@ -1,7 +1,9 @@
 
 // import { Card, ListGroup, Button, Form } from 'bootstrap-react';
 import React from 'react';
-import { Card, ListGroup, Button, Form  } from 'react-bootstrap';
+import { Card, ListGroup, Button, Form, Row, Container, Col  } from 'react-bootstrap';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import { TMDBDiscover, TMDBsearch } from '../utils';
 
 
@@ -16,19 +18,19 @@ class SearchPage extends React.Component {
     }
     
     //  to change page. passing the func a parameter. set the first page to be 1 in componentDidMount which happens once.
-    componentDidMount = () => { 
-        this.setPage(1);
-     }
+    // componentDidMount = () => { 
+    //     this.setPage(1);
+    //  }
 
    // setPage calls the API and when the results are returned we override this.state.movieArray with the results from the API.
     //the pageNum parameter is passed to the API. 
 
-    setPage = (pageNum) => {
-        TMDBDiscover({ page: pageNum })
-        .then((data) => {  
-            this.setState({ movieArray: data.results });
-        });   
-    }  
+    // setPage = (pageNum) => {
+    //     TMDBDiscover({ page: pageNum })
+    //     .then((data) => {  
+    //         this.setState({ movieArray: data.results });
+    //     });   
+    // }  
     
  
     
@@ -63,25 +65,25 @@ class SearchPage extends React.Component {
     // }
     
 
-    updateText = (event) =>{
-        const val = event.target.value;
-        // Update the internal state
-        this.setState({
-            searchText: val
-        });
-        TMDBsearch(5).then(allMoviesResults => 
-            {
-                // debugger;
-                this.setState(
-                {
-                    movieArray: allMoviesResults,
-                })
-            }
-        )
+    // updateText = (event) =>{
+    //     const val = event.target.value;
+    //     // Update the internal state
+    //     this.setState({
+    //         searchText: val
+    //     });
+    //     TMDBsearch(5).then(allMoviesResults => 
+    //         {
+    //             // debugger;
+    //             this.setState(
+    //             {
+    //                 movieArray: allMoviesResults,
+    //             })
+    //         }
+    //     )
 
-        // update the parent component 
-        // this.props.onSearchChanged(val);
-    }
+    //     // update the parent component 
+    //     // this.props.onSearchChanged(val);
+    // }
     // resultSelected = (index) => {
     //     this.props.onResultSelected(index);
     //     this.setState({
@@ -89,41 +91,49 @@ class SearchPage extends React.Component {
     //     });
     //     // this.props.onSearchChanged('');
     // }
-    
+    componentDidMount(){
+        TMDBsearch(5).then(allMoviesResults => 
+            {
+            
+                this.setState(
+                {
+                    movieArray: allMoviesResults,
+                })
+            }
+        )
+     }
     render() {
-        const searchResults = this.state.movieArray.filter((obj) => { return obj.title.toUpperCase().includes(this.state.searchText.toUpperCase()); }).map((dataItem, index) => {
-            return  <ListGroup.Item action key={index} onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}>{dataItem.original_title}</ListGroup.Item>
-        });
-        
-        // this.search(5)
+        let searchText = this.props.match.params.text
+  
+        const searchResultsCards = this.state.movieArray.filter((obj) => { 
+            return    obj.original_title.toUpperCase().includes(searchText.toUpperCase()); })
+            .map((dataItem, index) => {
+            return(
+        <Col>
+        <Card style={{ width: '9rem', borderRadius: '11px' }}>
+          <Link to={`/movies/${dataItem.id}`}><Card.Img  variant="top" src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${dataItem.poster_path}`}/></Link>
+            <Card.Body>
+                <Card.Title>{dataItem.original_title}</Card.Title>
+                <Card.Text>
+                Click on the picture for more details 
+                </Card.Text>
+  
+          </Card.Body>
+      </Card>
+      </Col>
+            )
+              });
         return (
-            <div className="search-box">                                                        
-            {/* Nullish coalescing operator (??)  if   this.props.placeholder  is undefined will show text "Please remember to pass props"*/}
-         
-            <ListGroup>                                                                     
-                {searchResults}
-            </ListGroup>
+            <div className="search-page">  
 
-
-                   Searchpage <br></br><br></br>
-      
-            <br></br><br></br>
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                        {/* <Button onClick={() => { const pageValue = prompt("Please enter page number"); this.setPage(pageValue);  }}>Change Page</Button> */}
-                  </Card.Body>
-              </Card>
+            <h1 className="search-header">Search Results</h1>
+            <Container>                                                      
+             <Row>                                                                  
+                {searchResultsCards}
+             </Row>
+             </Container>
           </div>
         )
     }
-    
 }
-
-export default SearchPage;
+export default withRouter(SearchPage);
