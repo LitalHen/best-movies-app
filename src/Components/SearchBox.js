@@ -17,21 +17,7 @@ class SearchBox extends React.Component {
         };
     }
     
-    //  to change page. passing the func a parameter. set the first page to be 1 in componentDidMount which happens once.
-    // componentDidMount = () => { 
-    //     this.setPage(1);
-    //  }
 
-   // setPage calls the API and when the results are returned we override this.state.movieArray with the results from the API.
-    //the pageNum parameter is passed to the API. 
-
-    // setPage = (pageNum) => {
-    //     TMDBDiscover({ page: pageNum })
-    //     .then((data) => {  
-    //         this.setState({ movieArray: data.results });
-    //     });   
-    // }  
-    
  
     chooseMovie = (id) => {
         
