@@ -25,6 +25,7 @@ class App extends React.Component {
   render(){
   return (
     <div>
+
      <HashRouter>
         <MainNavbar></MainNavbar>
         <Route exact path="/movies/:movieId">
@@ -33,8 +34,19 @@ class App extends React.Component {
         <Route exact path="/">
           <Homepage/>
         </Route>
-        <Route exact path="/movies">
-          <Movies/>
+        <Route exact path="/movies/new">
+          <Movies 
+          showPaginator={true}
+          showSort={false}
+          galleryTitle='New movies'
+          sortByDefault='release_date.desc'/>
+        </Route>
+        <Route exact path="/movies/best">
+          <Movies 
+          showPaginator={true}
+          showSort={false}
+          galleryTitle='Best movies'
+          sortByDefault='vote_average.desc'/>
         </Route>
         <Route exact path="/advanced-search">
           <AdvancedSearch/>

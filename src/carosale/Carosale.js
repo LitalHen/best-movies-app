@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { Carousel} from 'react-bootstrap'
-import { TMDBDiscover } from '../utils'
+import React, { Component } from 'react';
+import { Carousel} from 'react-bootstrap';
+import { TMDBDiscover } from '../utils';
+import './carosale.css';
 
 
 
@@ -29,7 +30,7 @@ componentDidMount = () =>{
              <Carousel.Item interval={3500}>
               <img
               className="d-block w-100"
-              src={`https://themoviedb.org/t/p/w400/${element.backdrop_path}`}
+              src={`https://themoviedb.org/t/p/w1280/${element.backdrop_path}`}
               alt="First slide"
               />
 
@@ -43,7 +44,7 @@ componentDidMount = () =>{
              )
         
       }}}
-        return (    <Carousel className="mt-3">
+        return (    <Carousel className="mt-3 slider-design">
                     {newCarouselArr} 
                     </Carousel>        ) 
 
