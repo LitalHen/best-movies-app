@@ -12,12 +12,20 @@ class Movies extends React.Component {
             moviesList:[],
             totalPages:1,
             currentPage:1,
-            mSorted:[]
+            sortValue:'vote_average.desc'
 
         }
     }
-    setCurrentPage = (pageNum) =>{
+    sortByValue=(val)=>{
+    
+        this.setState({
+            sortValue:val
+            },()=>{this.choosePage(this.state.currentPage)})
+            
+    }
 
+    setCurrentPage = (pageNum) =>{
+       
         this.setState({
             currentPage:pageNum
         })
@@ -26,8 +34,9 @@ class Movies extends React.Component {
     }
 
     choosePage = (pageNum) => {
-        const releaseDate='vote_average.desc';
-        TMDBDiscover({sort_by:releaseDate,page:pageNum})
+       
+        const sortTitle=this.state.sortValue;
+        TMDBDiscover({sort_by:sortTitle,page:pageNum})
         .then((listOfMovies)=>{
             if( listOfMovies && listOfMovies.results){
             const pages=listOfMovies.total_pages;
@@ -77,6 +86,7 @@ class Movies extends React.Component {
                 <MoviesGallery 
                 galleryTitle="All movies"
                 moviesList={this.state.moviesList}
+                sortByValue={this.sortByValue}
                  />
                 <Paginator 
                 totalPages={this.state.totalPages} 

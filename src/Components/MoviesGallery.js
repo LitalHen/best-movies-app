@@ -43,7 +43,7 @@ class MoviesGallery extends React.Component{
                 </Row> 
                 <Row className="mx-0 text-center">
                    <Col>
-                   <SortMovies></SortMovies>
+                   <SortMovies sortByValue={this.props.sortByValue}/>
                    </Col>
                 </Row> 
                 <Row className="row-cols-lg-5 row-cols-md-4 row-cols-sm-2  mx-0 my-2">
