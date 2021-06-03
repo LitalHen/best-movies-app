@@ -54,7 +54,8 @@ class MainNavbar extends React.Component{
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <NavLink className="nav-bar" to="/movies">Movies</NavLink>
+                        <NavLink className="nav-bar" to="/movies/new">Newest</NavLink>
+                        <NavLink className="nav-bar" to="/movies/best">Best movies</NavLink>
                         <NavLink to="/advanced-search"> Advanced Search</NavLink>
                     </Nav>
                     <Nav className="right">

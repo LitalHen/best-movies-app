@@ -17,11 +17,22 @@ function App() {
       <HashRouter>
       <MainNavbar/>
         
-        <Route exact path={['/','/disney-classics','/disney-new']}>
+        <Route exact path="/">
           <Homepage/>
         </Route>
-        <Route exact path="/movies">
-          <Movies/>
+        <Route exact path="/movies/new">
+          <Movies 
+          showPaginator={true}
+          showSort={false}
+          galleryTitle='New movies'
+          sortByDefault='release_date.desc'/>
+        </Route>
+        <Route exact path="/movies/best">
+          <Movies 
+          showPaginator={true}
+          showSort={false}
+          galleryTitle='Best movies'
+          sortByDefault='vote_average.desc'/>
         </Route>
         <Route exact path="/advanced-search">
           <AdvancedSearch/>

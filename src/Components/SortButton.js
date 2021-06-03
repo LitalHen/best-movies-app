@@ -13,10 +13,7 @@ class SortButton extends React.Component{
         render(){
       
                 return(
-                   
-                        // <Button type="button" onClick={()=>this.sortByYear(1)} variant="light" active={this.state.isButtonActive === 1 ? true : false}>{this.props.title}</Button>
                         <Button type="button" onClick={this.props.sortBy} variant="light" active={this.props.isActive}>{this.props.title}</Button>
-                       
                     )
          }
 }

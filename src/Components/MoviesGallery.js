@@ -41,7 +41,7 @@ class MoviesGallery extends React.Component{
                    </h3>
                    </Col>
                 </Row> 
-                <Row className="mx-0 text-center">
+                <Row className={this.props.showSort ?"mx-0 text-center" : "mx-0 text-center display-none" }>
                    <Col>
                    <SortMovies sortByValue={this.props.sortByValue}/>
                    </Col>

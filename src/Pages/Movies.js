@@ -1,6 +1,6 @@
 import React from 'react';
 import MoviesGallery from '../Components/MoviesGallery';
-
+import '../Components/components.css';
 import Paginator from '../Components/Paginator-generic';
 import { createMoviesObj, TMDBDiscover } from '../utils';
 
@@ -35,7 +35,7 @@ class Movies extends React.Component {
 
     choosePage = (pageNum) => {
        
-        const sortTitle=this.state.sortValue;
+        const sortTitle=(this.props.sortByDefault) ? this.props.sortByDefault : this.state.sortValue;
         TMDBDiscover({sort_by:sortTitle,page:pageNum})
         .then((listOfMovies)=>{
             if( listOfMovies && listOfMovies.results){
@@ -52,31 +52,13 @@ class Movies extends React.Component {
     }
    
     componentDidMount = () =>{
-    
-//const releaseDate='release_date.desc';
-// const releaseDate='vote_average.desc';
-// TMDBDiscover({sort_by:releaseDate,page:1})
-//         .then((listOfMovies)=>{
-//             if( listOfMovies && listOfMovies.results){
-//             const pages=listOfMovies.total_pages;
-//             const moviesSorted = createMoviesObj(listOfMovies);
-//                 // console.log('pages: '+pages)
-//                 // console.log('sort by date'+moviesSorted)
-//                 this.setState({
-//                     mSorted:moviesSorted
-//                     })
-//         }
-                   
-//     })
-    
-    
-   
         this.choosePage(this.state.currentPage);
     }
 
 
 
     render() {
+  console.log(this.props.showPaginator);
         // const checkSort=this.state.mSorted.map((movie,id)=> {
         //     return movie.rate;
         //  })
@@ -84,15 +66,18 @@ class Movies extends React.Component {
         return (
             <div >
                 <MoviesGallery 
-                galleryTitle="All movies"
+                galleryTitle={this.props.galleryTitle}
                 moviesList={this.state.moviesList}
                 sortByValue={this.sortByValue}
+                showSort={this.props.showSort}
                  />
+                 <div className={this.props.showPaginator? '' : 'display-none'}>
                 <Paginator 
+                showPaginator={this.props.showPaginator}
                 totalPages={this.state.totalPages} 
                 currentPage={this.state.currentPage}
                 setCurrentPage={this.setCurrentPage}
-                />
+                /></div>
             </div>
         )
     }
