@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DetailesPage from './Pages/DetailesPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
-import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/Searchpage';
 import AdvancedSearch from './Pages/AdvancedSearch';
 import React from 'react';
 
