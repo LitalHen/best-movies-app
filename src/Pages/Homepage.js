@@ -3,7 +3,7 @@ import {NavLink, Switch} from "react-router-dom";
 import { Route } from 'react-router';
 import {TMDBDiscover, useTMDBDiscover} from '../utils'; 
 import { Col, Container, Row } from 'react-bootstrap';
-
+import './Homepage.css';
 import Movies from './Movies';
 import { Link } from 'react-router-dom';
 import Carosale from '../carosale/Carosale';
@@ -23,7 +23,7 @@ class HomePage extends React.Component{
     render(){
         return(
             <div>
-                  <Container >
+                  <Container className="bg">
                      <Row> 
                     <Carosale/>
                          </Row> 
