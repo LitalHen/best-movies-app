@@ -4,19 +4,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DetailesPage from './Pages/DetailesPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
-import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/Searchpage';
 import AdvancedSearch from './Pages/AdvancedSearch';
+import React from 'react';
 
-function App() {
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      isLoading:true
+    }
+  }
+  isLoading=()=>{
 
+  }
+
+  render(){
   return (
     <div>
-      
-      <HashRouter>
-      <MainNavbar/>
-        
+
+     <HashRouter>
+        <MainNavbar></MainNavbar>
+        <Route exact path="/movies/:movieId">
+          <DetailesPage></DetailesPage>
+        </Route>
         <Route exact path="/">
           <Homepage/>
         </Route>
@@ -38,12 +52,12 @@ function App() {
           <AdvancedSearch/>
         </Route>
         <Route exact path="/search-page/:text">
-        <SearchPage></SearchPage>
+          <SearchPage></SearchPage>
         </Route>
 
       </HashRouter>
     </div>
   );
-}
+}}
 
 export default App;
