@@ -34,14 +34,15 @@ class App extends React.Component {
         <Route exact path="/">
           <Homepage/>
         </Route>
-        <Route exact path="/movies/new">
+        <Route exact path="/new">
+
           <Movies 
           showPaginator={true}
           showSort={false}
           galleryTitle='New movies'
           sortByDefault='release_date.desc'/>
         </Route>
-        <Route exact path="/movies/best">
+        <Route exact path="/best">
           <Movies 
           showPaginator={true}
           showSort={false}
