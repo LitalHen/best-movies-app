@@ -6,8 +6,6 @@ import { Link, withRouter } from 'react-router-dom';
 import SearchPage from '../Pages/SearchPage';
 import { TMDBDiscover, TMDBsearch } from '../utils';
 
-
-
 class SearchBox extends React.Component {
     constructor(props){
         super(props)
@@ -31,7 +29,8 @@ class SearchBox extends React.Component {
         const val = event.target.value;
      
         this.setState({
-            searchText: val
+            searchText: val,
+         
         });
         TMDBsearch(5).then(allMoviesResults => 
             {
@@ -49,7 +48,7 @@ class SearchBox extends React.Component {
              action
              key={index}
              onChange={()=> {dataItem.toUpperCase().includes(this.state.searchText.toUpperCase())}}
-              onClick= {() => this.chooseMovie(dataItem.id)}
+            onClick= {() => this.chooseMovie(dataItem.id)}
              >
              <div className="search-box-info">
             <div>
@@ -78,7 +77,5 @@ class SearchBox extends React.Component {
           </div>
         )
     }
-    
 }
-
 export default withRouter(SearchBox);
