@@ -52,7 +52,12 @@ margin-right: 0px;
   justify-content: space-around;
   margin-bottom: 35px;
   margin-top: 30px;
+  flex-wrap: wrap;
 
+
+}
+.upperDits > :first-of-type{
+  margin-bottom: 30px;
 }
 .detailsPage .card{
   height: inherit;
