@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import SortButton from './SortButton';
 import './SortMovies.css';
 
 
@@ -7,23 +8,25 @@ class SortMovies extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            isButtonActive:1
+            buttonActive:1
         }
+        
     }
+   
 changeActive=()=>{
 
 }
 sortByRating=()=>{
     console.log('vote_average.desc')
     this.setState({
-        isButtonActive:2
+        buttonActive:1
     });
    
 }
-sortByYear=(e)=>{
+sortByYear=()=>{
     console.log('release_date.desc');
     this.setState({
-        isButtonActive:1
+        buttonActive:2
     });
   //this.changeActive();
 
@@ -33,8 +36,14 @@ sortByYear=(e)=>{
                 return(
                     <div className='c-sorting-movies'>
                         <div id="btns">
-                        <Button type="button" onClick={()=>this.sortByYear(1)} variant="light" active={this.state.isButtonActive === 1 ? true : false}>latest movies</Button>
-                        <Button type="button" onClick={()=>this.sortByRating(2)} variant="light" active={this.state.isButtonActive === 2 ? true : false}>highest raiting</Button>
+                            <SortButton 
+                            sortBy={this.sortByYear}
+                            isActive={this.state.buttonActive ==='1' ? true : false}
+                            title="latest movies" />
+                              <SortButton 
+                            sortBy={this.sortByRating}
+                            isActive={this.state.buttonActive === '2' ? true : false}
+                            title="highest raiting" />
                         </div>
                     </div>
                     )
