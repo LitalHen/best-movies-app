@@ -1,7 +1,7 @@
 .advanced-search-btn{
     width: 10rem;
 }
-.downDits{
+.downInfo{
     
         display: flex;
         justify-content: space-around;
@@ -21,4 +21,30 @@
     margin-bottom: 30px;
 
 }
+.detailsPage{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(6, 5, 7)
+  
+  }
+  .detailsPage img {
+  margin-right: 0px;
+  
+  }
+  .upperInfo{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 35px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  
+  
+  }
+  .upperInfo > :first-of-type{
+    margin-bottom: 30px;
+  }
+  .detailsPage .card{
+    height: inherit;
+  }
 

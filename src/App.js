@@ -9,14 +9,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
 import SearchPage from './Pages/Searchpage';
 import AdvancedSearch from './Pages/AdvancedSearch';
+import React from 'react';
 
-function App() {
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      isLoading:true
+    }
+  }
+  isLoading=()=>{
 
+  }
+
+  render(){
   return (
     <div>
-      {/*/this.movieId = this.props.match.params.movieId;*/}
-
-      <HashRouter>
+     <HashRouter>
         <MainNavbar></MainNavbar>
         <Route exact path="/movies/:movieId">
           <DetailesPage></DetailesPage>
@@ -31,12 +40,12 @@ function App() {
           <AdvancedSearch/>
         </Route>
         <Route exact path="/search-page/:text">
-        <SearchPage></SearchPage>
+          <SearchPage></SearchPage>
         </Route>
 
       </HashRouter>
     </div>
   );
-}
+}}
 
 export default App;
