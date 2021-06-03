@@ -4,35 +4,60 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Movies from './Pages/Movies';
 import Homepage from './Pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DetailesPage from './Pages/DetailesPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainNavbar from './Components/Navbar-main';
-import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/Searchpage';
 import AdvancedSearch from './Pages/AdvancedSearch';
+import React from 'react';
 
-function App() {
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      isLoading:true
+    }
+  }
+  isLoading=()=>{
 
+  }
+
+  render(){
   return (
     <div>
-      
-      <HashRouter>
-      <MainNavbar/>
-        
-        <Route exact path={['/','/disney-classics','/disney-new']}>
+
+     <HashRouter>
+        <MainNavbar></MainNavbar>
+        <Route exact path="/movies/:movieId">
+          <DetailesPage></DetailesPage>
+        </Route>
+        <Route exact path="/">
           <Homepage/>
         </Route>
-        <Route exact path="/movies">
-          <Movies/>
+        <Route exact path="/movies/new">
+          <Movies 
+          showPaginator={true}
+          showSort={false}
+          galleryTitle='New movies'
+          sortByDefault='release_date.desc'/>
+        </Route>
+        <Route exact path="/movies/best">
+          <Movies 
+          showPaginator={true}
+          showSort={false}
+          galleryTitle='Best movies'
+          sortByDefault='vote_average.desc'/>
         </Route>
         <Route exact path="/advanced-search">
           <AdvancedSearch/>
         </Route>
         <Route exact path="/search-page/:text">
-        <SearchPage></SearchPage>
+          <SearchPage></SearchPage>
         </Route>
 
       </HashRouter>
     </div>
   );
-}
+}}
 
 export default App;

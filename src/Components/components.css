@@ -1,4 +1,8 @@
 /* Paginator-generic component */
+body{
+    /* background: rgb(9,9,121);
+background: linear-gradient(0deg, rgba(9,9,121,1) 0%, rgba(41,123,191,1) 35%, rgba(255,255,255,1) 100%); */
+}
 .display-none {
     display: none;
 }
