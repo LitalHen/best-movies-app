@@ -1,8 +1,18 @@
-div.carousel.slide {
-    /* width: 500px !important; */
-    
+.movie-year{
+    color:#fff !important;
+    font-size:5rem !important;
+    text-shadow:none !important;
+    top:-138px !important;
+    left:-185px !important;
 }
-.slider-design{
-    /* width:800px !important;
-    margin:auto; */
+
+@media (max-width: 768px) {
+    .movie-year{
+    top:-100px !important;
+    left:-150px !important;
+    }
+}
+.movie-title{
+        text-shadow:none !important;
+   
 }

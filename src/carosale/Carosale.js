@@ -18,6 +18,7 @@ componentDidMount = () =>{
    
    }
     render() {
+      
       const shuffledMovies = this.state.carouselArr.sort( (a, b) => {
         return Math.random() - 0.5
         } )
@@ -35,9 +36,9 @@ componentDidMount = () =>{
               />
 
                <Carousel.Caption>
-               <div> <h1>{element.release_date}</h1></div> 
+               <h1 className="movie-year mt-4">{(new Date(element.release_date)).getFullYear()}</h1> 
 
-               <div><h3>{element.original_title}</h3></div> 
+               <h3 className="movie-title">{element.original_title}</h3>
               
                </Carousel.Caption>
                </Carousel.Item>

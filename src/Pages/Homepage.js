@@ -24,7 +24,10 @@ class HomePage extends React.Component{
         return(
             <div>
                   <Container >
+                     <Row> 
                     <Carosale/>
+                         </Row> 
+                   
                     <Movies 
                         showPaginator={false}
                         showSort={true}
