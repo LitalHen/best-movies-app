@@ -14,7 +14,7 @@ export const TMDBDiscover = (params) => {
     .then((res) => res.json());
     
 }
-
+console.log(TMDBDiscover)
 export const TMDBsearch = (maxPages) => {
     let promiseArr= [];
     // let pages = maxPages - 1;
@@ -79,21 +79,25 @@ export const createMoviesObj = (listOfMovies) => {
  
 export  const  TMDBDetails = async (id)=>{
     let movie =  fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`);
-    let video=  fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+    let video =  fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`);
+   
     const tmdbStream = await Promise.all([movie, video]);
     const tmdbDetails = await tmdbStream[0].json();
-    const tmdbvideo = await tmdbStream[1].json();
-
+    const tmdbVideo = await tmdbStream[1].json();
+  
     let ImdbId= tmdbDetails.imdb_id;
     let omdbInfo= await fetch(`https://www.omdbapi.com/?apikey=de97b29a&i=${ImdbId}`)
     const omdbDetails=await omdbInfo.json();
-    
     const language=tmdbDetails.spoken_languages ? tmdbDetails.spoken_languages.map(item=>item.english_name) : null
     const rating= omdbDetails.Ratings ? omdbDetails.Ratings.map((rating)=>{
-        return <>{ rating.Source} {rating.Value}</>
-    }) : null;
+        return  <ul className="rating-list"><li>{rating.Source} : {rating.Value}</li></ul>
+        }) : null;
 
-    return { 
+    const trailer= (tmdbVideo && tmdbVideo.results)? tmdbVideo.results.filter((video) => {
+        return ((video["type"]).toUpperCase() == "TRAILER") && !((video["name"].toUpperCase()).includes("TEASER"))
+    }): null 
+
+        return { 
                title:tmdbDetails.original_title,
                 year: omdbDetails.Year,
                 rating: rating,
@@ -103,11 +107,16 @@ export  const  TMDBDetails = async (id)=>{
                 genre:omdbDetails.Genre,
                 director:omdbDetails.Director,
                 language:language,
-                poster_path: `https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`,
-                video: (tmdbvideo && tmdbvideo.results && tmdbvideo.results[0] && tmdbvideo.results[0]["key"])?tmdbvideo.results[0]["key"]:`https://themoviedb.org/t/p/w780/${tmdbDetails.backdrop_path}`
+                poster_path: `https://themoviedb.org/t/p/w780${tmdbDetails.backdrop_path}`,
+                video: (trailer) ? trailer[0]["key"] : null,
+          
       }
     }
 
 
 
-
+    export const TMDBCast = async (id) =>{
+        let tmdbInfo= await fetch (`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`);
+        const tmdbActors = await tmdbInfo.json();
+        return tmdbActors.cast ? tmdbActors.cast:null  
+    }

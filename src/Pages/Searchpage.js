@@ -43,7 +43,6 @@ class SearchPage extends React.Component {
                 <Card.Text>
                    Click on the picture for more details 
                 </Card.Text>
-  
           </Card.Body>
       </Card>
       </Col>
