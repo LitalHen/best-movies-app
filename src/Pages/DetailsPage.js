@@ -104,7 +104,7 @@ import Actors from './Actors';
                 <div className="movie-actor">
 
                     <Actors
-                    actors={this.state.cast}/>
+                    cast={this.state.cast}/>
                 </div>
             </div>
         )
