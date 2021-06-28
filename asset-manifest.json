@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/best-movies-app/static/css/main.db988ef4.chunk.css",
-    "main.js": "/best-movies-app/static/js/main.89ff5e3d.chunk.js",
-    "main.js.map": "/best-movies-app/static/js/main.89ff5e3d.chunk.js.map",
-    "runtime-main.js": "/best-movies-app/static/js/runtime-main.94231f0d.js",
-    "runtime-main.js.map": "/best-movies-app/static/js/runtime-main.94231f0d.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/best-movies-app/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.e5afd197.chunk.js": "/best-movies-app/static/js/2.e5afd197.chunk.js",
-    "static/js/2.e5afd197.chunk.js.map": "/best-movies-app/static/js/2.e5afd197.chunk.js.map",
-    "static/js/3.05fbe54e.chunk.js": "/best-movies-app/static/js/3.05fbe54e.chunk.js",
-    "static/js/3.05fbe54e.chunk.js.map": "/best-movies-app/static/js/3.05fbe54e.chunk.js.map",
-    "index.html": "/best-movies-app/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/best-movies-app/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.db988ef4.chunk.css.map": "/best-movies-app/static/css/main.db988ef4.chunk.css.map",
-    "static/js/2.e5afd197.chunk.js.LICENSE.txt": "/best-movies-app/static/js/2.e5afd197.chunk.js.LICENSE.txt"
+    "main.css": "/movies-app/static/css/main.0baef3d3.chunk.css",
+    "main.js": "/movies-app/static/js/main.989b2d8b.chunk.js",
+    "main.js.map": "/movies-app/static/js/main.989b2d8b.chunk.js.map",
+    "runtime-main.js": "/movies-app/static/js/runtime-main.4115af4a.js",
+    "runtime-main.js.map": "/movies-app/static/js/runtime-main.4115af4a.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/movies-app/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.25f4c3b9.chunk.js": "/movies-app/static/js/2.25f4c3b9.chunk.js",
+    "static/js/2.25f4c3b9.chunk.js.map": "/movies-app/static/js/2.25f4c3b9.chunk.js.map",
+    "static/js/3.3af92693.chunk.js": "/movies-app/static/js/3.3af92693.chunk.js",
+    "static/js/3.3af92693.chunk.js.map": "/movies-app/static/js/3.3af92693.chunk.js.map",
+    "index.html": "/movies-app/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/movies-app/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.0baef3d3.chunk.css.map": "/movies-app/static/css/main.0baef3d3.chunk.css.map",
+    "static/js/2.25f4c3b9.chunk.js.LICENSE.txt": "/movies-app/static/js/2.25f4c3b9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.94231f0d.js",
+    "static/js/runtime-main.4115af4a.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.e5afd197.chunk.js",
-    "static/css/main.db988ef4.chunk.css",
-    "static/js/main.89ff5e3d.chunk.js"
+    "static/js/2.25f4c3b9.chunk.js",
+    "static/css/main.0baef3d3.chunk.css",
+    "static/js/main.989b2d8b.chunk.js"
   ]
 }
